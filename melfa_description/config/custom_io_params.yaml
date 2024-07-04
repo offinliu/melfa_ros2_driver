@@ -1,0 +1,22 @@
+controller_limits:
+  R:
+    hand_io_limits: 900,907
+    plc_link_io_limits: 10000,18191 
+    safety_input_limits: 128,135,160,167 
+    safety_output_limits: 128,131,160,163
+
+  Q:
+    hand_io_limits: 900,907
+    plc_link_io_limits: 10000,18191 
+    safety_input_limits: 128,135,160,167
+    safety_output_limits: 128,131,160,163
+
+  D:
+    hand_io_limits: 900,907
+    plc_link_io_limits: 10000,18191 
+    safety_input_limits: 128,135,160,167
+    safety_output_limits: 128,131,160,163
+
+control_mode_io:
+  io_mode: 111
+

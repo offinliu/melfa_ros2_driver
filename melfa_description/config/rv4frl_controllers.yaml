@@ -1,0 +1,89 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 286  #Hz
+
+    rv4frl_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    gpio_controller:
+      type: melfa_io_controllers/MelfaGPIOController
+
+    forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+rv4frl_controller:
+  ros__parameters:
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+    joints:
+      - rv4frl_joint_1
+      - rv4frl_joint_2
+      - rv4frl_joint_3
+      - rv4frl_joint_4
+      - rv4frl_joint_5
+      - rv4frl_joint_6
+
+    state_publish_rate: 200.0 # Defaults to 50
+    action_monitor_rate: 20.0 # Defaults to 20
+
+gpio_controller:
+  ros__parameters:
+    hand_io_state_interfaces:
+      - hand_io/bit_id
+      - hand_io/bit_mask
+      - hand_io/bit_send_type
+      - hand_io/input_data
+      - hand_io/output_data
+    plc_link_io_state_interfaces:
+      - plc_link_io/bit_id
+      - plc_link_io/bit_mask
+      - plc_link_io/bit_send_type
+      - plc_link_io/input_data
+      - plc_link_io/output_data
+    safety_io_state_interfaces:
+      - safety_io/bit_id
+      - safety_io/bit_mask
+      - safety_io/bit_send_type
+      - safety_io/input_data
+      - safety_io/output_data
+    misc_io_state_interfaces:
+      - io_control_mode/io_mode
+      - ctrl/ctrl_type
+    hand_io_command_interfaces:
+      - hand_io/bit_id
+      - hand_io/bit_mask
+      - hand_io/bit_recv_type
+      - hand_io/bit_send_type
+      - hand_io/output_data
+    plc_link_io_command_interfaces:
+      - plc_link_io/bit_id
+      - plc_link_io/bit_mask
+      - plc_link_io/bit_recv_type
+      - plc_link_io/bit_send_type
+      - plc_link_io/output_data
+    safety_io_command_interfaces:
+      - safety_io/bit_id
+      - safety_io/bit_mask
+      - safety_io/bit_recv_type
+      - safety_io/bit_send_type
+      - safety_io/output_data
+    misc_io_command_interfaces:
+      - io_control_mode/io_mode
+      - ctrl/ctrl_type
+
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - rv4frl_joint_1
+      - rv4frl_joint_2
+      - rv4frl_joint_3
+      - rv4frl_joint_4
+      - rv4frl_joint_5
+      - rv4frl_joint_6
+
+    interface_name: position

@@ -1,0 +1,25 @@
+# Dedicated IO for R and Q
+int16 RQ_STOP = 10000
+int16 RQ_START = 10001
+int16 RQ_ERRRESET = 10009
+int16 RQ_SRVON = 10010
+int16 RQ_SRVOFF = 10011
+
+# Bit Mask Modes
+uint16 BIT_TOP_MODE = 0x0001
+uint16 PACKET_MODE = 0xFFFF
+
+
+# IO Configuration
+string SET_READ_OUT = "READ_OUT" # READS entire 16 bit
+string SET_WRITE_OUT = "WRITE_OUT" # WRITES only the masked bits in bitmask
+string SET_READ_IN = "READ_IN" # READS entire 16 bit
+
+
+# Fields Required
+uint16 bitid
+string mode
+uint16 bitdata
+uint16 bitmask
+---
+bool success

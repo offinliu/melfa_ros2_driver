@@ -1,0 +1,6 @@
+# Default initial positions for the melfa_fr arm's ros2_control fake system
+initial_positions:
+  rh_joint_1: 0.0
+  rh_joint_2: 0.0
+  rh_joint_3: 0.149
+  rh_joint_4: 0.0

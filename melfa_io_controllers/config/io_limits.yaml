@@ -1,0 +1,5 @@
+# Controller type: [ Hand_io_min, Hand_io_max, plc_link_io_min, plc_link_io_max, DSI1-8-A Min, DSI1-8-A Max,  DSI1-8-B Min, DSI1-8-B Max,
+# DSO1-4-A Min, DSO1-4-A Max, DSO1-4-B Min, DSO1-4-B Max]
+R: [ 900, 907, 10000, 18191, 128, 135, 160, 167, 128, 131, 160, 163]
+Q: [ 900, 907, 10000, 18191, 128, 135, 160, 167, 128, 131, 160, 163]
+D: [ 900, 907, 10000, 18191, 128, 135, 160, 167, 128, 131, 160, 163]

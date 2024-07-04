@@ -1,0 +1,6 @@
+# Binary IO control mode Fields Required
+bool hand_io_interface
+bool plc_link_io_interface
+bool safety_io_interface
+---
+bool success
