@@ -1,9 +1,18 @@
+<img src="./figures/MELFA_t.png" width="400" height="98"> <img src="./figures/ROS-AP-logo.png" width="208" height="98">
+
+### Other guides:
+- [Home page](./../README.md)
+- [MELFA ROS2 user guide](./melfa_ros2_driver.md) : Usage and Installation of MELFA ROS2.
+- [RT Toolbox3 Setup](./rt_toolbox3_setup.md) : Create your first RT Toolbox3 Project File for ROS2.
+- [RT Toolbox3 Simulator Setup](./rt_sim_setup.md) : Connect to RT Toolbox3 simulator as if it is a real robot.
+- [RT Toolbox3 Real Robot Setup](./rt_real_setup.md): Connect to a MELFA robot.
+  
 # Packages in the Repository
-- melfa_fr_bringup: provides launch files for robot bringup
-- melfa_fr_description: contains robot descriptions
-- melfa_fr_driver: provides driver/hardware interface for communication with MELFA robots
-- melfa_fr_io_controllers: provides ROS2 controllers for GPIO control
-- melfa_fr_moveit_config: provides example MoveIt config and launch files for MELFA robots
+- melfa_bringup: provides launch files for robot bringup
+- melfa_description: contains robot descriptions
+- melfa_driver: provides driver/hardware interface for communication with MELFA robots
+- melfa_io_controllers: provides ROS2 controllers for GPIO control
+- melfa_moveit_config: provides example MoveIt config and launch files for MELFA robots
 - melfa_msgs: provides ROS2 msgs for MELFA robots
 
 # Build
@@ -29,21 +38,21 @@ source install/setup.bash
 ```
 1. View robot
 ```
-ros2 launch melfa_fr_description view_RV7FRL.launch.py 
+ros2 launch melfa_description view_RV7FRL.launch.py 
 ```
 2. Launch robot arm 
 
 2.1 Simulation (the controller_type and robot_ip values do not affect simulation outcomes)
 ```
-ros2 launch melfa_fr_bringup RV7FRL_control.launch.py use_fake_hardware:=true controller_type:=<CONTROLLER TYPE> robot_ip:=<ROBOT IP>
+ros2 launch melfa_bringup RV7FRL_control.launch.py use_fake_hardware:=true controller_type:=<CONTROLLER TYPE> robot_ip:=<ROBOT IP>
 ```
 2.2 Use real robot (the controller_type ["R" (or) "Q" (or) "D"] and robot_ip should be aligned with actual robot) 
 ```
-ros2 launch melfa_fr_bringup RV7FRL_control.launch.py use_fake_hardware:=false controller_type:=<CONTROLLER TYPE>  robot_ip:=<ROBOT IP>
+ros2 launch melfa_bringup RV7FRL_control.launch.py use_fake_hardware:=false controller_type:=<CONTROLLER TYPE>  robot_ip:=<ROBOT IP>
 ```
 Eg:
 ```
-ros2 launch melfa_fr_bringup RV7FRL_control.launch.py use_fake_hardware:=false controller_type:="R" robot_ip:=192.168.0.20
+ros2 launch melfa_bringup RV7FRL_control.launch.py use_fake_hardware:=false controller_type:="R" robot_ip:=192.168.0.20
 ```
 3. Launch MoveIt
 ```
@@ -54,7 +63,7 @@ ros2 launch melfa_rv7frl_moveit_config RV7FRL_moveit.launch.py
 
 1. Launch real robot arm with controller_type R/ Q / D [Terminal 1]
 ```
-ros2 launch melfa_fr_bringup RV7FRL_control.launch.py use_fake_hardware:=false controller_type:=<CONTROLLER TYPE> robot_ip:=<ROBOT IP>
+ros2 launch melfa_bringup RV7FRL_control.launch.py use_fake_hardware:=false controller_type:=<CONTROLLER TYPE> robot_ip:=<ROBOT IP>
 ```
 
 2. To view the enabled IO interfaces 
@@ -157,7 +166,7 @@ Note: The above command disables any read or write operation for the plc_link_io
 
 Launch robot driver simulation or real robot [Terminal 1]
 ```
-ros2 launch melfa_fr_bringup RV7FRL_control.launch.py use_fake_hardware:=true controller_type:=<CONTROLLER TYPE> robot_ip:=<ROBOT IP> launch_servo:=true
+ros2 launch melfa_bringup RV7FRL_control.launch.py use_fake_hardware:=true controller_type:=<CONTROLLER TYPE> robot_ip:=<ROBOT IP> launch_servo:=true
 ```
 
 Launch moveit config [Terminal 2]
