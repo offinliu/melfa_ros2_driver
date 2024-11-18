@@ -10,7 +10,7 @@ Introducing the next generation of intelligent robots, incorporating advanced so
 [![RTR demo](https://markdown-videos.vercel.app/youtube/X7CBorolqrE?si=VlLh2xOvs8k0HvZc)](https://youtu.be/X7CBorolqrE?si=VlLh2xOvs8k0HvZc)
 [![MEAU demo](https://markdown-videos.vercel.app/youtube/Ks6ji6kw68c?si=KCWWB8-P_m3ofB4V)](https://youtu.be/Ks6ji6kw68c?si=KCWWB8-P_m3ofB4V)
 - [Learn more](https://www.mitsubishielectric.com/fa/products/rbt/robot/index.html)
-- [Robot catalog](https://dl.mitsubishielectric.com/dl/fa/document/catalog/robot/l(na)-09091eng/l09091m.pdf)
+- [Robot catalog](https://www.mitsubishielectric.com/app/fa/download/search.do?kisyu=/robot&mode=catalog)
 
 </br>
 
@@ -129,7 +129,7 @@ MELFA ROS2 consists of six main components: melfa_bringup, melfa_description, me
 
 &#10146; <sup>4</sup>  __MXT__ is the command to enable __real time external control__.
 
->Note1: You can download the [Ethernet Function Instruction Manual](https://dl.mitsubishielectric.co.jp/dl/fa/document/empf/manual/robot/bfp-a3379/bfpa3379g.empf) from [Robot Industrial/Collaborative Robot MELFA Manual](https://www.mitsubishielectric.co.jp/fa/download/search.do?mode=manual&kisyu=/robot).</br>
+>Note1: You can download the [Ethernet Function Instruction Manual](https://www.mitsubishielectric.co.jp/fa/download/search.do?mode=manual&kisyu=/robot&q=Ethernet%20Function%20Instruction%20Manual&sort=0&style=0&lang=2&category1=0&filter_readme=0&filter_discontinued=0&filter_bundled=0) from [Robot Industrial/Collaborative Robot MELFA Manual](https://www.mitsubishielectric.co.jp/fa/download/search.do?mode=manual&kisyu=/robot).</br>
 
 
 ## __3. MELFA ROS2 Driver Usage and Installation__
@@ -156,7 +156,7 @@ MELFA ROS2 Driver is designed to interface CR800 robot controllers with the ROS2
 
 ## __5. MELFA Naming Convention__
 
-This section provides a brief introduction to naming conventions of MELFA robots. Below are images from our [robot catalog](https://dl.mitsubishielectric.com/dl/fa/document/catalog/robot/l(na)-09091eng/l09091m.pdf) describing the naming convention.
+This section provides a brief introduction to naming conventions of MELFA robots. Below are images from our [robot catalog](https://www.mitsubishielectric.com/app/fa/download/search.do?kisyu=/robot&mode=catalog) describing the naming convention.
 
 For articulated robots (RV), it is fairly straightforward as the variations that contribute to package differences are __Maximum load capacity__, __Series__ and __Arm length__. 
 
