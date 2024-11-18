@@ -132,12 +132,12 @@ MELFA ROS2 consists of six main components: melfa_bringup, melfa_description, me
 >Note1: You can download the [Ethernet Function Instruction Manual](https://dl.mitsubishielectric.co.jp/dl/fa/document/empf/manual/robot/bfp-a3379/bfpa3379g.empf) from [Robot Industrial/Collaborative Robot MELFA Manual](https://www.mitsubishielectric.co.jp/fa/download/search.do?mode=manual&kisyu=/robot).</br>
 
 
-## __3. MELFA ROS2 Usage and Installation__
+## __3. MELFA ROS2 Driver Usage and Installation__
 
-MELFA ROS2 is designed to interface CR800 robot controllers with the ROS2 so that developers can leverage the contributions from the Open Source Community with an industry proven robot platform.
+MELFA ROS2 Driver is designed to interface CR800 robot controllers with the ROS2 so that developers can leverage the contributions from the Open Source Community with an industry proven robot platform.
 </br>
 
-&#10148; If your ROS PC is installed with ROS 2 Humble Hawksbill, see [MELFA ROS2-humble](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2/tree/humble) and follow the user guide.</br>
+&#10148; If your ROS PC is installed with ROS 2 Humble Hawksbill, see [MELFA ROS2 Driver-humble](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_driver/tree/humble) and follow the user guide.</br>
 
 - [MELFA ROS2 user guide](./doc/melfa_ros2_driver.md) : Usage and Installation of MELFA ROS2.
 - [RT Toolbox3 Setup](./doc/rt_toolbox3_setup.md) : Create your first RT Toolbox3 Project File for ROS2.
@@ -149,9 +149,8 @@ MELFA ROS2 is designed to interface CR800 robot controllers with the ROS2 so tha
 
 ## __4. Other MELFA ROS2 Related Repositories__
 
-- [MELFA ROS2 8axis with Demo](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_8axis/tree/humble) : ROS2 description, moveit_config and simple moveit application for 6-axis articulated robot with 2-axis travel axis. Accompanied with RT Toolbox3 Project File to try in RT Toolbox3 simulator.
-- [MELSOFT Simulators Demo](https://github.com/Mitsubishi-Electric-Asia/melsoft_simulators_demo/tree/humble) : uses MELSOFT GX simulator3, MELSOFT GT simulator3 and MELSOFT RT Toolbox3 simulator to demostrate "accurate" simulations using proprietary technologies that can be leveraged by the open source community.
-- [Simple applications](https://github.com/Mitsubishi-Electric-Asia/simple_moveit_scripts/tree/humble) : experience MELFA ROS2 features through simple applications.
+- [MELFA ROS2 8axis with Demo](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_8axis/tree/humble) : ROS2 description, moveit_config and simple moveit application for 6-axis articulated robot and 4-axis SCARA robot with 2-axis travel axis. Accompanied with RT Toolbox3 Project File to try in RT Toolbox3 simulator.
+- [MELFA ROS2 Masterclass 2024](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_masterclass_2024/tree/humble) : Masterclass repository for ROS-Industrial Asia Pacific Summit 2024: Empowering Innovations with MELSOFT Simulators. Repository includes various C++ multithreaded nodes for interfacing with HMI and PLC. Includes a simple pick and place MoveIt2 program with interoperability with PLC and HMI. Experience MELSOFT GX simulator3, MELSOFT GT simulator3 and MELSOFT RT Toolbox3 simulator with true to system simulations using proprietary technologies that can be leveraged by the open source community.
 
 <div> </div>
 
@@ -179,6 +178,6 @@ __Environment specifications__, __Internal wiring__ and __Controller type__ do n
 
 
 ## __6. Contact us / Technical support__
-More Support & Service, please contact us [@MEAP](https://sg.mitsubishielectric.com/fa/en/contact.html). For contributing and reporting, refer to [this](./CONTRIBUTING.md) for development related enquiries.
+More Support & Service, please contact us [@MEAP](https://sg.mitsubishielectric.com/fa/en/contact.html) &#9743;. For contributing and reporting, refer to [this](./CONTRIBUTING.md) for development related enquiries.
 
 <div> </div>
