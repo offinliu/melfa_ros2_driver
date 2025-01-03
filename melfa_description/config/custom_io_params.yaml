@@ -15,10 +15,10 @@
 controller_limits:
   R:
     hand_io_limits: 900,907
-    plc_link_io_limits: 10000,12047
+    plc_link_io_limits: 10000,11023
     safety_input_limits: 128,135,160,167 
     safety_output_limits: 128,131,160,163
-    io_unit_limits: 0, 127
+    io_unit_limits: 11024, 12047
     misc1_io_limits: 12048, 14095
     misc2_io_limits: 14096, 16143
     misc3_io_limits: 16144, 18191
@@ -26,10 +26,10 @@ controller_limits:
 
   Q:
     hand_io_limits: 900,907
-    plc_link_io_limits: 10000,12047 
-    safety_input_limits: 128,135,160,167
+    plc_link_io_limits: 10000,11023
+    safety_input_limits: 128,135,160,167 
     safety_output_limits: 128,131,160,163
-    io_unit_limits: 0, 127
+    io_unit_limits: 11024, 12047
     misc1_io_limits: 12048, 14095
     misc2_io_limits: 14096, 16143
     misc3_io_limits: 16144, 18191
