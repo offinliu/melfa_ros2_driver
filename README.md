@@ -149,8 +149,10 @@ MELFA ROS2 Driver is designed to interface CR800 robot controllers with the ROS2
 
 ## __4. Other MELFA ROS2 Related Repositories__
 
-- [MELFA ROS2 8axis with Demo](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_8axis/tree/humble) : ROS2 description, moveit_config and simple moveit application for 6-axis articulated robot and 4-axis SCARA robot with 2-axis travel axis. Accompanied with RT Toolbox3 Project File to try in RT Toolbox3 simulator.
-- [MELFA ROS2 Masterclass 2024](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_masterclass_2024/tree/humble) : Masterclass repository for ROS-Industrial Asia Pacific Summit 2024: Empowering Innovations with MELSOFT Simulators. Repository includes various C++ multithreaded nodes for interfacing with HMI and PLC. Includes a simple pick and place MoveIt2 program with interoperability with PLC and HMI. Experience MELSOFT GX simulator3, MELSOFT GT simulator3 and MELSOFT RT Toolbox3 simulator with true to system simulations using proprietary technologies that can be leveraged by the open source community.
+- [MELFA ROS2 8XS](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_8xs/tree/humble) : Sample package with MELSERVO integration for 6+2-axis articulated robot and 4+2-axis SCARA robot. Accompanied with RT Toolbox3 Project File to try in RT Toolbox3 simulator.
+- [MELFA ROS2 Masterclass 2024](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_masterclass_2024/tree/humble) : Masterclass repository for ROS-Industrial Asia Pacific Summit 2024: Empowering Innovations with MELSOFT Simulators. 
+- [MELFA ROS2 PLC](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_plc/tree/humble) : Sample program with simple integration for MELSEC iQ-R Controllers.
+- [MELFA ROS2 HMI](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_hmi/tree/humble) : Sample program with simple integration with GOT-HMI (Human Machine Interface) for iQ-platform robot controllers.
 
 <div> </div>
 
