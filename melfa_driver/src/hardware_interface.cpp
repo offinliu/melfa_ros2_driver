@@ -227,7 +227,7 @@ MELFAPositionHardwareInterface::on_activate(const rclcpp_lifecycle::State& previ
   api_wrap_->cmd_pack.send_type = MXT_TYP_JOINT;          // set joint cmd type to joint.
   *(api_wrap_->cmd_pack.mon_dat) = MXT_TYP_FB_JOINT;      // set first feedback to joint encoder feedback.
   *(api_wrap_->cmd_pack.mon_dat + 1) = MXT_TYP_FB_POSE;   // set second feedback to pose feedback.
-  *(api_wrap_->cmd_pack.mon_dat + 2) = MXT_TYP_FB_PULSE;  // set thrid feedback to pulseper second.
+  *(api_wrap_->cmd_pack.mon_dat + 2) = MXT_TYP_FB_PULSE;  // set thrid feedback to pulse per second.
   *(api_wrap_->cmd_pack.mon_dat + 3) = MXT_TYP_FBKCUR;    // set forth feedback to % current.
 
   // API debug mode
@@ -242,7 +242,7 @@ MELFAPositionHardwareInterface::on_activate(const rclcpp_lifecycle::State& previ
 
   RCLCPP_INFO(rclcpp::get_logger("MELFAPositionHardwareInterface"), "System successfully started!");
 
-  // Reads joint position state from Melfa API feedback packet
+  // Reads joint position state from rtexc API feedback packet
   joint_position_states_[0] = api_wrap_->fb_pack.jnt_EFB.j1;
   joint_position_states_[1] = api_wrap_->fb_pack.jnt_EFB.j2;
   if (is_scara == 1)
@@ -251,15 +251,26 @@ MELFAPositionHardwareInterface::on_activate(const rclcpp_lifecycle::State& previ
   }
   joint_position_states_[2] = api_wrap_->fb_pack.jnt_EFB.j3;
   joint_position_states_[3] = api_wrap_->fb_pack.jnt_EFB.j4;
+  if (is_scara==0)
+  {
   joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j5;
   joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j6;
+  }
   if (is_j7 == 1)
   {
     if (j7_linear == 1)
     {
       api_wrap_->fb_pack.jnt_EFB.j7 /= 1000.0;
     }
-    joint_position_states_[6] = api_wrap_->fb_pack.jnt_EFB.j7;
+    if (is_scara==1)
+    {
+      joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j7;
+    }
+    else 
+    {
+      joint_position_states_[6] = api_wrap_->fb_pack.jnt_EFB.j7;
+    }
+
   }
   if (is_j8 == 1)
   {
@@ -267,7 +278,14 @@ MELFAPositionHardwareInterface::on_activate(const rclcpp_lifecycle::State& previ
     {
       api_wrap_->fb_pack.jnt_EFB.j8 /= 1000.0;
     }
-    joint_position_states_[7] = api_wrap_->fb_pack.jnt_EFB.j8;
+    if (is_scara ==1)
+    {
+      joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j8;
+    }
+    else 
+    {
+      joint_position_states_[7] = api_wrap_->fb_pack.jnt_EFB.j8;
+    }
   }
   joint_position_commands_ = joint_position_states_;
 
@@ -530,15 +548,26 @@ hardware_interface::return_type MELFAPositionHardwareInterface::read(const rclcp
   }
   joint_position_states_[2] = api_wrap_->fb_pack.jnt_EFB.j3;
   joint_position_states_[3] = api_wrap_->fb_pack.jnt_EFB.j4;
+  if (is_scara==0)
+  {
   joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j5;
   joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j6;
+  }
   if (is_j7 == 1)
   {
     if (j7_linear == 1)
     {
       api_wrap_->fb_pack.jnt_EFB.j7 /= 1000.0;
     }
-    joint_position_states_[6] = api_wrap_->fb_pack.jnt_EFB.j7;
+    if (is_scara==1)
+    {
+      joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j7;
+    }
+    else 
+    {
+      joint_position_states_[6] = api_wrap_->fb_pack.jnt_EFB.j7;
+    }
+
   }
   if (is_j8 == 1)
   {
@@ -546,7 +575,14 @@ hardware_interface::return_type MELFAPositionHardwareInterface::read(const rclcp
     {
       api_wrap_->fb_pack.jnt_EFB.j8 /= 1000.0;
     }
-    joint_position_states_[7] = api_wrap_->fb_pack.jnt_EFB.j8;
+    if (is_scara ==1)
+    {
+      joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j8;
+    }
+    else 
+    {
+      joint_position_states_[7] = api_wrap_->fb_pack.jnt_EFB.j8;
+    }
   }
 
   // Function to read IO feedbacks for different IO interfaces
@@ -672,11 +708,21 @@ hardware_interface::return_type MELFAPositionHardwareInterface::write(const rclc
     api_wrap_->cmd_pack.jnt_CMD.j3 *= 1000.0;
   }
   api_wrap_->cmd_pack.jnt_CMD.j4 = joint_position_commands_[3];
-  api_wrap_->cmd_pack.jnt_CMD.j5 = joint_position_commands_[4];
-  api_wrap_->cmd_pack.jnt_CMD.j6 = joint_position_commands_[5];
+  if (is_scara == 0)
+  {
+    api_wrap_->cmd_pack.jnt_CMD.j5 = joint_position_commands_[4];
+    api_wrap_->cmd_pack.jnt_CMD.j6 = joint_position_commands_[5];
+  }
   if (is_j7 == 1)
   {
-    api_wrap_->cmd_pack.jnt_CMD.j7 = joint_position_commands_[6];
+    if (is_scara==1)
+    {
+      api_wrap_->cmd_pack.jnt_CMD.j7 = joint_position_commands_[4];
+    }
+    else
+    {
+      api_wrap_->cmd_pack.jnt_CMD.j7 = joint_position_commands_[6];
+    }
     if (j7_linear == 1)
     {
       api_wrap_->cmd_pack.jnt_CMD.j7 *= 1000.0;
@@ -684,7 +730,14 @@ hardware_interface::return_type MELFAPositionHardwareInterface::write(const rclc
   }
   if (is_j8 == 1)
   {
+    if (is_scara==1)
+    {
+    api_wrap_->cmd_pack.jnt_CMD.j8 = joint_position_commands_[5];
+    }
+    else
+    {
     api_wrap_->cmd_pack.jnt_CMD.j8 = joint_position_commands_[7];
+    }
     if (j8_linear == 1)
     {
       api_wrap_->cmd_pack.jnt_CMD.j8 *= 1000.0;
