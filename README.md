@@ -4,6 +4,8 @@
     
 ## __1. Overview__
 
+MELFA ROS2 Driver, co-developed with [ROS-Industrial Consortium Asia Pacific](https://rosindustrial.org/ric-apac), provides a suite of tools to enable the creation of advance solutions using our industry proven platform. Mitsubishi Electric provides a ROS2 driver, ROS2 io controllers, robot description files and moveit_config packages of each robot; optimized in-house by our developers to ensure high performance. 
+
 Introducing the next generation of intelligent robots, incorporating advanced solutions technology and “e-F@ctory”, technologies and concepts developed and proven using Mitsubishi Electric’s own production facilities that go beyond basic robotic performance to find ways of reducing the TCO in everything from planning and design through to operation and maintenance. 
 </br>
 
@@ -13,8 +15,6 @@ Introducing the next generation of intelligent robots, incorporating advanced so
 - [Robot catalog](https://www.mitsubishielectric.com/app/fa/download/search.do?kisyu=/robot&mode=catalog)
 
 </br>
-
-MELFA ROS2, co-developed with [ROS-Industrial Consortium Asia Pacific](https://rosindustrial.org/ric-apac), provides a suite of tools to enable the creation of advance solutions using our industry proven platform. Mitsubishi Electric provides a ros2 driver, ros2 io controllers, robot description files and moveit_config packages of each robot; optimized in-house by our developers to ensure high performance.
 
 ## __2. MELFA ROS2 Feature__
 
@@ -56,8 +56,8 @@ MELFA ROS2 consists of six main components: melfa_bringup, melfa_description, me
 <head>
 </head>
     <tr>
-        <th colspan="1">Supported Robots</th>
-        <th colspan="3">Supported Robot Controllers</th>
+        <th colspan="1">Tier 1 Supported Robots</th>
+        <th colspan="3">Robot Controllers</th>
     </tr>
     <tr>
         <th>Robot Model</th>
