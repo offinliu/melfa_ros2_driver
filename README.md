@@ -16,9 +16,9 @@ Introducing the next generation of intelligent robots, incorporating advanced so
 
 </br>
 
-## __2. MELFA ROS2 Feature__
+## __2. MELFA ROS2 Driver Feature__
 
-MELFA ROS2 consists of six main components: melfa_bringup, melfa_description, melfa_driver, melfa_io_controllers, melfa_msgs, various moveit_config packages.
+MELFA ROS2 Driver consists of six main components: melfa_bringup, melfa_description, melfa_driver, melfa_io_controllers, melfa_msgs, various moveit_config packages.
 
 ### __melfa_bringup__
 
