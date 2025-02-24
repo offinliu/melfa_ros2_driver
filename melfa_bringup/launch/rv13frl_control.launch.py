@@ -1,4 +1,4 @@
-#    COPYRIGHT (C) 2024 Mitsubishi Electric Corporation
+#    COPYRIGHT (C) 2025 Mitsubishi Electric Corporation
 
 #    Licensed under the Apache License, Version 2.0 (the "License");
 #    you may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
 #    limitations under the License.
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, RegisterEventHandler, ExecuteProcess
+from launch.actions import DeclareLaunchArgument, RegisterEventHandler, ExecuteProcess, IncludeLaunchDescription
 from launch.conditions import IfCondition, UnlessCondition
 from launch.event_handlers import OnProcessExit
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from launch.event_handlers import OnProcessStart
+from launch_ros.parameter_descriptions import ParameterFile
 
 def generate_launch_description():
     # Declare arguments
@@ -58,7 +60,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             'prefix',
-            default_value='""',
+            default_value='',
             description='Prefix of the joint names, useful for multi-robot setup. \
                         If changed than also joint names in the controllers \
                         configuration have to be updated.',
@@ -216,11 +218,15 @@ def generate_launch_description():
     control_node = Node(
         package='controller_manager',
         executable='ros2_control_node',
-        parameters=[robot_description, robot_controllers],
+        parameters=[robot_description, 
+                    robot_controllers,
+                    ParameterFile(robot_controllers, allow_substs=True)],
         output={
             'stdout': 'screen',
             'stderr': 'screen',
         },
+        condition=UnlessCondition(use_sim),
+
     )
 
     robot_state_pub_node = Node(
@@ -304,6 +310,38 @@ def generate_launch_description():
         )
     )
 
+    # Gazebo related nodes
+    gz_launch_description_with_gui = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            [FindPackageShare("ros_gz_sim"), "/launch/gz_sim.launch.py"]
+        ),
+        launch_arguments={"gz_args": ["-r", "-v", "4", "empty.sdf"]}.items(),
+        condition=IfCondition(use_sim),
+    )
+    # Make /clock topic available in ROS2
+    gz_sim_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
+        ],
+        output="screen",
+        condition=IfCondition(use_sim),
+    )
+
+    gz_spawn_entity = Node(
+        package="ros_gz_sim",
+        executable="create",
+        output="screen",
+        arguments=[
+            "-string",
+            robot_description_content,
+            "-allow_renaming",
+            "true",
+        ],
+        condition=IfCondition(use_sim),
+    )
+
     nodes = [
         control_node,
         robot_state_pub_node,
@@ -313,6 +351,9 @@ def generate_launch_description():
         switch_controller_event_handler,
         delay_rviz_after_joint_state_broadcaster_spawner,
         delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
+        gz_launch_description_with_gui,
+        gz_sim_bridge,
+        gz_spawn_entity,
     ]
 
     return LaunchDescription(declared_arguments + nodes)

@@ -15,7 +15,7 @@
     <xacro:arg name="j7_linear" default="0" />
     <xacro:arg name="is_j8" default="0" />
     <xacro:arg name="j8_linear" default="0" />
-
+    <xacro:arg name="simulation_controllers" default="" />
 
     <!-- Import urdf file -->
     <xacro:include filename="$(find melfa_description)/urdf/rv4fr/rv4fr_macro.xacro" />
@@ -23,8 +23,8 @@
     <xacro:include filename="$(find melfa_description)/ros2_control/rv4fr.hardware.xacro" />
 
     <!-- Use world link to fix robot -->
-    <link name="world"/>
-    <xacro:rv4fr parent="world" prefix="$(arg prefix)">
+    <link name="$(arg prefix)world"/>
+    <xacro:rv4fr parent="$(arg prefix)world" prefix="$(arg prefix)">
         <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:rv4fr>
     <xacro:rv4fr_hardware
@@ -43,5 +43,16 @@
         use_fake_hardware="$(arg use_fake_hardware)"
         controller_type="$(arg controller_type)"
         />
+    <xacro:if value="$(arg use_sim)">
+        <!-- Gazebo plugins -->
+        <gazebo reference="world">
+        </gazebo>
+        <gazebo>
+        <plugin filename="libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+            <parameters>$(arg simulation_controllers)</parameters>
+            <controller_manager_node_name>$(arg prefix)controller_manager</controller_manager_node_name>
+        </plugin>
+        </gazebo>
+    </xacro:if>
 
 </robot>

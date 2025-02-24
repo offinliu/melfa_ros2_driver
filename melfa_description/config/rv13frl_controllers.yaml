@@ -1,4 +1,4 @@
-#    COPYRIGHT (C) 2024 Mitsubishi Electric Corporation
+#    COPYRIGHT (C) 2025 Mitsubishi Electric Corporation
 
 #    Licensed under the Apache License, Version 2.0 (the "License");
 #    you may not use this file except in compliance with the License.
@@ -35,12 +35,12 @@ rv13frl_controller:
     state_interfaces:
       - position
     joints:
-      - rv13frl_joint_1
-      - rv13frl_joint_2
-      - rv13frl_joint_3
-      - rv13frl_joint_4
-      - rv13frl_joint_5
-      - rv13frl_joint_6
+      - $(var prefix)rv13frl_joint_1
+      - $(var prefix)rv13frl_joint_2
+      - $(var prefix)rv13frl_joint_3
+      - $(var prefix)rv13frl_joint_4
+      - $(var prefix)rv13frl_joint_5
+      - $(var prefix)rv13frl_joint_6
 
     state_publish_rate: 200.0 # Defaults to 50
     action_monitor_rate: 20.0 # Defaults to 20
@@ -141,11 +141,11 @@ gpio_controller:
 forward_position_controller:
   ros__parameters:
     joints:
-      - rv13frl_joint_1
-      - rv13frl_joint_2
-      - rv13frl_joint_3
-      - rv13frl_joint_4
-      - rv13frl_joint_5
-      - rv13frl_joint_6
+      - $(var prefix)rv13frl_joint_1
+      - $(var prefix)rv13frl_joint_2
+      - $(var prefix)rv13frl_joint_3
+      - $(var prefix)rv13frl_joint_4
+      - $(var prefix)rv13frl_joint_5
+      - $(var prefix)rv13frl_joint_6
 
     interface_name: position
