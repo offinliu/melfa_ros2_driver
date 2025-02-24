@@ -23,7 +23,7 @@
     <xacro:include filename="$(find melfa_description)/ros2_control/rv80fr.hardware.xacro" />
 
     <!-- Use world link to fix robot -->
-    <link name="world"/>
+    <link name="$(arg prefix)world"/>
     <xacro:rv80fr parent="$(arg prefix)world" prefix="$(arg prefix)">
         <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:rv80fr>

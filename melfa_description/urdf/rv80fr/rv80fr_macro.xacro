@@ -24,7 +24,7 @@
         </material>
            <joint name="${prefix}rv80fr_world_to_base" type="fixed">
                 <origin rpy="0 0 0" xyz="0 0 0"/>
-                <parent link="${prefix}${parent}"/>
+                <parent link="${parent}"/>
                 <child link="${prefix}rv80fr_base"/>
                 <dynamics damping="1.0" friction="1.0"/>
             </joint>
