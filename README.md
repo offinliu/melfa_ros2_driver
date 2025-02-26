@@ -32,7 +32,7 @@ MELFA ROS2 Driver consists of six main components: melfa_bringup, melfa_descript
 ### __melfa_driver__
 
 - supports [ros2_control](https://control.ros.org/humble/doc/getting_started/getting_started.html).
-- provides __real time communication__<sup>1</sup> hardware interface with our CR800-R/Q/D robot controllers via __rtexc api__ <sup>2</sup> from our [__MELFA ethernet SDK__](https://github.com/Mitsubishi-Electric-Asia/melfa_ethernet_sdk/tree/main). 
+- provides __real time communication__<sup>1</sup> hardware interface with our CR800/860-R/Q/D robot controllers via __rtexc api__ <sup>2</sup> from our [__MELFA ethernet SDK__](https://github.com/Mitsubishi-Electric-Asia/melfa_ethernet_sdk/tree/main). 
 - connects to the robot controller via __rtexc api__ to control the robot via __MELFA BASIC VI__<sup>3</sup> __MXT__<sup>4</sup> command. The robot position command, robot state & I/O data are transmitted through this connection. 
 - includes quality of life features built into __rtexc api__ such as user configurable disconnection detection and debugging tools.
 
@@ -57,71 +57,107 @@ MELFA ROS2 Driver consists of six main components: melfa_bringup, melfa_descript
 </head>
     <tr>
         <th colspan="1">Tier 1 Supported Robots</th>
-        <th colspan="3">Robot Controllers</th>
+        <th colspan="4">Robot Controllers</th>
     </tr>
     <tr>
         <th>Robot Model</th>
         <th>CR800-R</th>
         <th>CR800-Q</th>
         <th>CR800-D</th>
+        <th>CR860-D/R/Q</th>
     </tr>
     <tr>
         <td>RH-6FRH5520</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
+        <td>&#10005;</td>
     </tr>
     <tr>
         <td>RH-6CRH6020</td>
         <td>&#10005;</td>
         <td>&#10005;</td>
         <td>&#9711;</td>
+        <td>&#10005;</td>
     </tr>
     <tr>
         <td>RV-2FR</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
+        <td>&#10005;</td>
     </tr>
     <tr>
         <td>RV-4FR</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
+        <td>&#10005;</td>
     </tr>
     <tr>
         <td>RV-4FRL</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
+        <td>&#10005;</td>
     </tr>
     <tr>
         <td>RV-5AS</td>
         <td>&#10005;</td>
         <td>&#10005;</td>
         <td>&#9711;</td>
+        <td>&#10005;</td>
     </tr>
     <tr>
         <td>RV-7FRL</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
+        <td>&#10005;</td>
     </tr>
     <tr>
         <td>RV-8CRL</td>
         <td>&#10005;</td>
         <td>&#10005;</td>
         <td>&#9711;</td>
+        <td>&#10005;</td>
     </tr>
     <tr>
         <td>RV-13FRL</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
         <td>&#9711;</td>
+        <td>&#10005;</td>
+    </tr>
+    <tr>
+        <td>RV-80FR</td>
+        <td>&#10005;</td>
+        <td>&#10005;</td>
+        <td>&#10005;</td>
+        <td>&#9711;</td>
     </tr>
 </table>
 
-&#10146; <sup>1</sup>  __real time communication__ frequency is 286Hz for CR800-R & CR-800-D and 141Hz for CR800-Q.
+<table>
+<head>
+</head>
+    <tr>
+        <th colspan="1">Tier 2 Supported Robots</th>
+        <th colspan="2">Robot Controllers</th>
+    </tr>
+    <tr>
+        <th>Robot Model</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <th colspan="3">...Coming soon...</th>
+    </tr>
+</table>
+
+
+
+&#10146; <sup>1</sup>  __real time communication__ frequency is 286Hz for CR800/860-R & CR-800/860-D and 141Hz for CR800-Q.
 
 &#10146; <sup>2</sup>  __rtexc api__ stands for Real Time External Control API.
 
