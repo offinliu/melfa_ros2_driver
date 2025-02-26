@@ -14,7 +14,7 @@
 
 controller_limits:
   R:
-    hand_io_limits: 900,907
+    hand_io_limits: 764,907
     plc_link_io_limits: 10000,11023
     safety_input_limits: 128,135,160,167 
     safety_output_limits: 128,131,160,163
@@ -25,7 +25,7 @@ controller_limits:
 
 
   Q:
-    hand_io_limits: 900,907
+    hand_io_limits: 764,907
     plc_link_io_limits: 10000,11023
     safety_input_limits: 128,135,160,167 
     safety_output_limits: 128,131,160,163
@@ -35,7 +35,7 @@ controller_limits:
     misc3_io_limits: 16144, 18191
 
   D:
-    hand_io_limits: 900,907
+    hand_io_limits: 764,907
     plc_link_io_limits: 10000,12047
     safety_input_limits: 128,135,160,167
     safety_output_limits: 128,131,160,163
