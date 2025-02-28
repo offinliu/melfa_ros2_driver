@@ -12,6 +12,8 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+import os
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, RegisterEventHandler, ExecuteProcess, IncludeLaunchDescription
 from launch.conditions import IfCondition, UnlessCondition
@@ -164,7 +166,13 @@ def generate_launch_description():
     controller_config = PathJoinSubstitution(
         [FindPackageShare(description_package), "config", controller_config]
     )
-
+    robot_controllers = PathJoinSubstitution(
+        [
+            FindPackageShare(runtime_config_package),
+            'config',
+            controllers_file,
+        ]
+    )
     # Get URDF via xacro
     robot_description_content = Command(
         [
@@ -200,17 +208,13 @@ def generate_launch_description():
             ' ',
             'launch_servo:=',
             launch_servo,
+            ' ',
+            "simulation_controllers:=",
+            robot_controllers,
         ]
     )
     robot_description = {'robot_description': robot_description_content}
 
-    robot_controllers = PathJoinSubstitution(
-        [
-            FindPackageShare(runtime_config_package),
-            'config',
-            controllers_file,
-        ]
-    )
     rviz_config_file = PathJoinSubstitution(
         [FindPackageShare(description_package), 'rviz', 'rv13frl.rviz']
     )
@@ -318,13 +322,15 @@ def generate_launch_description():
         launch_arguments={"gz_args": ["-r", "-v", "4", "empty.sdf"]}.items(),
         condition=IfCondition(use_sim),
     )
-    # Make /clock topic available in ROS2
+    # Make topics available in ROS2
+    pkg_project_bringup = get_package_share_directory('melfa_bringup')
     gz_sim_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
-        arguments=[
-            "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
-        ],
+        parameters=[{
+            'config_file': os.path.join(pkg_project_bringup, 'config', 'ros_gz_bridge.yaml'),
+            'qos_overrides./tf_static.publisher.durability': 'transient_local',
+        }],
         output="screen",
         condition=IfCondition(use_sim),
     )
