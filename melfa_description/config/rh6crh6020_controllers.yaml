@@ -39,6 +39,10 @@ rh6crh6020_controller:
       - $(var prefix)rh6crh6020_joint_2
       - $(var prefix)rh6crh6020_joint_3
       - $(var prefix)rh6crh6020_joint_4
+      # - rh6crh6020_joint_1
+      # - rh6crh6020_joint_2
+      # - rh6crh6020_joint_3
+      # - rh6crh6020_joint_4
 
     state_publish_rate: 200.0 # Defaults to 50
     action_monitor_rate: 20.0 # Defaults to 20
@@ -143,5 +147,9 @@ forward_position_controller:
       - $(var prefix)rh6crh6020_joint_2
       - $(var prefix)rh6crh6020_joint_3
       - $(var prefix)rh6crh6020_joint_4
+      # - rh6crh6020_joint_1
+      # - rh6crh6020_joint_2
+      # - rh6crh6020_joint_3
+      # - rh6crh6020_joint_4
       
     interface_name: position

@@ -41,8 +41,14 @@ rv2fr_controller:
       - $(var prefix)rv2fr_joint_4
       - $(var prefix)rv2fr_joint_5
       - $(var prefix)rv2fr_joint_6
+      # - rv2fr_joint_1
+      # - rv2fr_joint_2
+      # - rv2fr_joint_3
+      # - rv2fr_joint_4
+      # - rv2fr_joint_5
+      # - rv2fr_joint_6
 
-    state_publish_rate: 200.0 # Defaults to 50
+    state_publish_rate: 286.0 # Defaults to 50
     action_monitor_rate: 20.0 # Defaults to 20
 
 gpio_controller:
@@ -147,5 +153,11 @@ forward_position_controller:
       - $(var prefix)rv2fr_joint_4
       - $(var prefix)rv2fr_joint_5
       - $(var prefix)rv2fr_joint_6
+      # - rv2fr_joint_1
+      # - rv2fr_joint_2
+      # - rv2fr_joint_3
+      # - rv2fr_joint_4
+      # - rv2fr_joint_5
+      # - rv2fr_joint_6
 
     interface_name: position

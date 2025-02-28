@@ -13,7 +13,7 @@
         <!-- Inertial parameters -->
         <xacro:property name="base_mass" value="0.4" />  <!-- These mass are INCORRRECT -->
         <xacro:property name="shoulder_mass" value="0.37000" />
-        <xacro:property name="upper_arm_mass" value="0.83930" />
+        <xacro:property name="upper_arm_mass" value="0.33930" />
         <xacro:property name="elbow_mass" value="0.22750" />
         <xacro:property name="forearm_mass" value="0.12190" />
         <xacro:property name="wrist_mass" value="0.12190" />
@@ -26,7 +26,6 @@
             <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
             <parent link="${parent}"/>
             <child link="${prefix}rv4frl_base"/>
-            <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv4frl_joint_1" type="revolute">
             <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>

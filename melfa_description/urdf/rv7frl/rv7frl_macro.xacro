@@ -13,11 +13,12 @@
         <!-- Inertial parameters -->
         <xacro:property name="base_mass" value="0.4" />  <!-- These mass are INCORRRECT -->
         <xacro:property name="shoulder_mass" value="0.37000" />
-        <xacro:property name="upper_arm_mass" value="0.83930" />
-        <xacro:property name="elbow_mass" value="0.22750" />
+        <xacro:property name="upper_arm_mass" value="0.33930" />
+        <xacro:property name="forearm_mass" value="0.22750" />
+        <xacro:property name="elbow_mass" value="0.12190" />
         <xacro:property name="forearm_mass" value="0.12190" />
         <xacro:property name="wrist_mass" value="0.12190" />
-        <xacro:property name="hand_flange_mass" value="0.01879" />
+        <xacro:property name="hand_flange_mass" value="0.12190" />
 
         <material name="white">
             <color rgba="1.0 1.0 1.0 1.0"/>
@@ -33,7 +34,7 @@
             <parent link="${prefix}rv7frl_base"/>
             <child link="${prefix}rv7frl_shoulder"/>
              <axis xyz="0 0 1" />
-            <limit lower="-4.188790" upper="4.188790" effort="1" velocity="5.026548" />
+            <limit lower="-4.188790" upper="4.188790" effort="50" velocity="5.026548" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv7frl_joint_2" type="revolute">
@@ -41,7 +42,7 @@
             <parent link="${prefix}rv7frl_shoulder"/>
             <child link="${prefix}rv7frl_upper_arm"/>
             <axis xyz="0 1 0" />
-            <limit lower="-1.919862" upper="2.268928" effort="1" velocity="5.602507" />
+            <limit lower="-1.919862" upper="2.268928" effort="50" velocity="5.602507" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv7frl_joint_3" type="revolute">
@@ -49,7 +50,7 @@
             <parent link="${prefix}rv7frl_upper_arm" />
             <child link="${prefix}rv7frl_elbow" />
             <axis xyz="0 1 0" />
-            <limit lower="0.000000" upper="2.827433" effort="1" velocity="6.283185" />
+            <limit lower="0.000000" upper="2.827433" effort="50" velocity="6.283185" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv7frl_joint_4" type="revolute">
@@ -57,7 +58,7 @@
             <parent link="${prefix}rv7frl_elbow" />
             <child link="${prefix}rv7frl_forearm" />
             <axis xyz="0 0 1" />
-            <limit lower="-3.490659" upper="3.490659" effort="1" velocity="5.881760" />
+            <limit lower="-3.490659" upper="3.490659" effort="50" velocity="5.881760" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv7frl_joint_5" type="revolute">
@@ -65,7 +66,7 @@
             <parent link="${prefix}rv7frl_forearm" />
             <child link="${prefix}rv7frl_wrist" />
             <axis xyz="0 1 0" />
-            <limit lower="-2.094395" upper="2.094395" effort="1" velocity="7.853981" />
+            <limit lower="-2.094395" upper="2.094395" effort="50" velocity="7.853981" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv7frl_joint_6" type="revolute">
@@ -73,7 +74,7 @@
             <parent link="${prefix}rv7frl_wrist" />
             <child link="${prefix}rv7frl_hand_flange" />
             <axis xyz="0 0 1" />
-            <limit lower="-6.283185" upper="6.283185" effort="1" velocity="12.566371" />
+            <limit lower="-6.283185" upper="6.283185" effort="50" velocity="12.566371" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv7frl_hand_flange-to-default_tcp" type="fixed">
