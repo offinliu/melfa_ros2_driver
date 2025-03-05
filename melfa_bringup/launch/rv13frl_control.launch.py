@@ -1,4 +1,4 @@
-#    COPYRIGHT (C) 2025 Mitsubishi Electric Corporation
+#    COPYRIGHT (C) 2024 Mitsubishi Electric Corporation
 
 #    Licensed under the Apache License, Version 2.0 (the "License");
 #    you may not use this file except in compliance with the License.
@@ -156,7 +156,7 @@ def generate_launch_description():
     launch_servo = LaunchConfiguration('launch_servo')
 
     initial_positions_file = LaunchConfiguration('initial_positions_file')
-    
+
     initial_positions_file = PathJoinSubstitution(
         [FindPackageShare(description_package), "config", initial_positions_file]
     )
@@ -222,9 +222,8 @@ def generate_launch_description():
     control_node = Node(
         package='controller_manager',
         executable='ros2_control_node',
-        parameters=[robot_description, 
-                    robot_controllers,
-                    ParameterFile(robot_controllers, allow_substs=True)],
+        parameters=[ParameterFile(robot_controllers, allow_substs=True)],
+        remappings=[("~/robot_description", "robot_description"),],
         output={
             'stdout': 'screen',
             'stderr': 'screen',
@@ -239,6 +238,7 @@ def generate_launch_description():
         output='both',
         parameters=[robot_description],
     )
+
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
@@ -264,7 +264,7 @@ def generate_launch_description():
         package="controller_manager",
         executable="spawner",
         arguments=["gpio_controller", "-c", "/controller_manager"],
-        condition=UnlessCondition(use_fake_hardware),
+        condition=UnlessCondition(use_fake_hardware) or UnlessCondition(use_sim),
     )
 
     forward_position_controller_spawner = Node(

@@ -171,7 +171,6 @@ def generate_launch_description():
             FindPackageShare(runtime_config_package),
             'config',
             controllers_file,
-            # ParameterFile(controllers_file, allow_substs=True),
         ]
     )
     # Get URDF via xacro
@@ -223,9 +222,8 @@ def generate_launch_description():
     control_node = Node(
         package='controller_manager',
         executable='ros2_control_node',
-        parameters=[robot_description, 
-                    robot_controllers,
-                    ParameterFile(robot_controllers, allow_substs=True)],
+        parameters=[ParameterFile(robot_controllers, allow_substs=True)],
+        remappings=[("~/robot_description", "robot_description"),],
         output={
             'stdout': 'screen',
             'stderr': 'screen',
@@ -240,6 +238,7 @@ def generate_launch_description():
         output='both',
         parameters=[robot_description],
     )
+    
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',

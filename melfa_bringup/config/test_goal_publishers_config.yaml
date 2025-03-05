@@ -1,7 +1,7 @@
 publisher_joint_trajectory_controller:
   ros__parameters:
 
-    controller_name: "rv2fr_controller"
+    controller_name: "rv80fr_controller"
     wait_sec_between_publish: 6
 
     goal_names: ["pos1", "pos2","pos3","pos4"]
@@ -18,18 +18,18 @@ publisher_joint_trajectory_controller:
       positions: [1.0, 1.0, 0.5, 0.0, 1.0, 0.0]
 
     joints:
-      - rv2fr_joint_1
-      - rv2fr_joint_2
-      - rv2fr_joint_3
-      - rv2fr_joint_4
-      - rv2fr_joint_5
-      - rv2fr_joint_6
+      - rv80fr_joint_1
+      - rv80fr_joint_2
+      - rv80fr_joint_3
+      - rv80fr_joint_4
+      - rv80fr_joint_5
+      - rv80fr_joint_6
 
     check_starting_point: true
     starting_point_limits:
-      rv2fr_joint_1: [-3.0,3.0] 
-      rv2fr_joint_2: [-1.6,1.6]
-      rv2fr_joint_3: [-1.0,1.6]
-      rv2fr_joint_4: [-3.0,3.0]
-      rv2fr_joint_5: [-1.6,1.6]
-      rv2fr_joint_6: [-1.6,1.6]
+      rv80fr_joint_1: [-3.0,3.0] 
+      rv80fr_joint_2: [-1.6,1.6]
+      rv80fr_joint_3: [-1.0,1.6]
+      rv80fr_joint_4: [-3.0,3.0]
+      rv80fr_joint_5: [-1.6,1.6]
+      rv80fr_joint_6: [-1.6,1.6]
