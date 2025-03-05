@@ -42,6 +42,12 @@ namespace melfa_io_controllers
       fprintf(stderr, "Exception thrown during init stage with message: %s \n", e.what());
       return controller_interface::CallbackReturn::ERROR;
     }
+
+    get_node()->declare_parameter("robot_", "rvm2_");
+    std::string robot_=get_node()->get_parameter("robot_").as_string();
+    RCLCPP_INFO(rclcpp::get_logger("gpio_controller_load_prefix"), "robot_:  %s",robot_.c_str());
+
+
     return controller_interface::CallbackReturn::SUCCESS;
   }
 
