@@ -131,12 +131,18 @@ def generate_launch_description():
             description='Select MELFA Controller Type : [R or Q or D]',
         )
     )
-
     declared_arguments.append(
         DeclareLaunchArgument(
             'launch_servo',
             default_value='false',
             description='Argument to activate controllers for servo',
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            'packet_lost_log',
+            default_value='1',
+            description='Enable/disable packet lost warning. DO NOTE DISABLE WHEN USING A REAL ROBOT.',
         )
     )
     
@@ -154,6 +160,7 @@ def generate_launch_description():
     robot_port = LaunchConfiguration('robot_port')
     controller_type = LaunchConfiguration('controller_type')
     launch_servo = LaunchConfiguration('launch_servo')
+    packet_lost_log = LaunchConfiguration('packet_lost_log')
 
     initial_positions_file = LaunchConfiguration('initial_positions_file')
 
@@ -211,6 +218,9 @@ def generate_launch_description():
             ' ',
             "simulation_controllers:=",
             robot_controllers,
+            ' ',
+            "packet_lost_log:=",
+            packet_lost_log,
         ]
     )
     robot_description = {'robot_description': robot_description_content}

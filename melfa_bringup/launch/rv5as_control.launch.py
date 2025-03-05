@@ -131,6 +131,13 @@ def generate_launch_description():
             description='Argument to activate controllers for servo',
         )
     )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            'packet_lost_log',
+            default_value='1',
+            description='Enable/disable packet lost warning. DO NOTE DISABLE WHEN USING A REAL ROBOT.',
+        )
+    )
     
     # Initialize Arguments
     runtime_config_package = LaunchConfiguration('runtime_config_package')
@@ -145,9 +152,10 @@ def generate_launch_description():
     robot_ip = LaunchConfiguration('robot_ip')
     robot_port = LaunchConfiguration('robot_port')
     launch_servo = LaunchConfiguration('launch_servo')
+    packet_lost_log = LaunchConfiguration('packet_lost_log')
 
     initial_positions_file = LaunchConfiguration('initial_positions_file')
-    
+
     initial_positions_file = PathJoinSubstitution(
         [FindPackageShare(description_package), "config", initial_positions_file]
     )
@@ -199,10 +207,13 @@ def generate_launch_description():
             ' ',
             "simulation_controllers:=",
             robot_controllers,
+            ' ',
+            "packet_lost_log:=",
+            packet_lost_log,
         ]
     )
     robot_description = {'robot_description': robot_description_content}
-    
+
     rviz_config_file = PathJoinSubstitution(
         [FindPackageShare(description_package), 'rviz', 'rv5as.rviz']
     )
@@ -226,7 +237,7 @@ def generate_launch_description():
         output='both',
         parameters=[robot_description],
     )
-    
+
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',

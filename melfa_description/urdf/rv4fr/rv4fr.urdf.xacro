@@ -15,6 +15,7 @@
     <xacro:arg name="j7_linear" default="0" />
     <xacro:arg name="is_j8" default="0" />
     <xacro:arg name="j8_linear" default="0" />
+    <xacro:arg name="packet_lost_log" default="1" />
     <xacro:arg name="simulation_controllers" default="" />
 
     <!-- Import urdf file -->
@@ -42,6 +43,7 @@
         use_sim="$(arg use_sim)" 
         use_fake_hardware="$(arg use_fake_hardware)"
         controller_type="$(arg controller_type)"
+        packet_lost_log="$(arg packet_lost_log)"
         />
     <xacro:if value="$(arg use_sim)">
         <!-- Gazebo plugins -->

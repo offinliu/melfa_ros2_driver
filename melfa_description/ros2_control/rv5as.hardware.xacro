@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro name="rv5as_hardware" params="name prefix robot_ip robot_port scara is_j7 j7_linear is_j8 j8_linear initial_positions_file controller_config controller_type use_sim:=^|false use_fake_hardware:=^|true">
+    <xacro:macro name="rv5as_hardware" params="name prefix robot_ip robot_port scara is_j7 j7_linear is_j8 j8_linear packet_lost_log initial_positions_file controller_config controller_type use_sim:=^|false use_fake_hardware:=^|true">
         <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_positions']}"/>
         <xacro:property name="ctrl_limits" value="${xacro.load_yaml(controller_config)['controller_limits']}"/>
         <xacro:property name="ctrl_mode" value="${xacro.load_yaml(controller_config)['control_mode_io']}"/>
@@ -29,6 +29,7 @@
                     <param name="j7_linear">${j7_linear}</param>
                     <param name="is_j8">${is_j8}</param>
                     <param name="j8_linear">${j8_linear}</param>
+                    <param name="packet_lost_log">${packet_lost_log}</param>
                      <!-- Controller Type R/Q/D -->
                     <param name="controller_type">${controller_type}</param>
                      <!-- Limits of IO with respect to controller_type -->

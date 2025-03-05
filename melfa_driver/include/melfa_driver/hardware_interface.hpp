@@ -86,6 +86,7 @@ private:
   uint8_t is_j8;
   uint8_t j7_linear;
   uint8_t j8_linear;
+  uint8_t packet_lost_log;
 
   bool execution_init_;
   unsigned int binary_config_;

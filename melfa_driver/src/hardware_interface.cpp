@@ -233,6 +233,7 @@ MELFAPositionHardwareInterface::on_activate(const rclcpp_lifecycle::State& previ
   j7_linear = stoi(info_.hardware_parameters["j7_linear"]);
   is_j8 = stoi(info_.hardware_parameters["is_j8"]);
   j8_linear = stoi(info_.hardware_parameters["j8_linear"]);
+  packet_lost_log = stoi(info_.hardware_parameters["packet_lost_log"]);
   api_wrap_->create_port();
 
   api_wrap_->cmd_pack.send_type = MXT_TYP_JOINT;          // set joint cmd type to joint.
@@ -546,8 +547,12 @@ hardware_interface::return_type MELFAPositionHardwareInterface::read(const rclcp
       RCLCPP_FATAL(rclcpp::get_logger("MELFAPositionHardwareInterface"), "ERROR: Connection lost.");
       return hardware_interface::return_type::ERROR;
     }
-    RCLCPP_WARN(rclcpp::get_logger("MELFAPositionHardwareInterface"), "WARN: Packet lost. %d",
+    if (packet_lost_log!=0)
+    {
+      RCLCPP_WARN(rclcpp::get_logger("MELFAPositionHardwareInterface"), "WARN: Packet lost. %d",
                 api_wrap_->packet_recv_lost);
+    }
+    
     return hardware_interface::return_type::OK;
   }
 

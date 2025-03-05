@@ -53,7 +53,7 @@ rv7frl_controller:
 
 gpio_controller:
   ros__parameters:
-    $(var prefix)hand_io_state_interfaces:
+    hand_io_state_interfaces:
       - $(var prefix)hand_io/bit_id
       - $(var prefix)hand_io/bit_mask
       - $(var prefix)hand_io/bit_send_type
