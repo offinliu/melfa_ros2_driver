@@ -102,6 +102,17 @@ MELFAPositionHardwareInterface::on_init(const hardware_interface::HardwareInfo& 
   // Reading user defined IO binary control mode and Melfa Controller type
   io_control_mode_ = info_.hardware_parameters["io_control_mode"];
   controller_type_ = info_.hardware_parameters["controller_type"];
+  prefix_ = info_.hardware_parameters["prefix"];
+  RCLCPP_INFO(rclcpp::get_logger("MELFAPositionHardwareInterface"), "prefix_:  %s",prefix_.c_str());
+  hand_io_name.insert(0,prefix_);
+  plc_link_io_name.insert(0,prefix_);
+  safety_io_name.insert(0,prefix_);
+  io_unit_name.insert(0,prefix_);
+  misc1_io_name.insert(0,prefix_);
+  misc2_io_name.insert(0,prefix_);
+  misc3_io_name.insert(0,prefix_);
+  io_control_mode_name.insert(0,prefix_);
+  ctrl_name.insert(0,prefix_);
 
   // Joint position commmands and states initiailization
   joint_position_commands_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
@@ -152,7 +163,7 @@ MELFAPositionHardwareInterface::on_init(const hardware_interface::HardwareInfo& 
   }
   for (const hardware_interface::ComponentInfo& gpios : info_.gpios)
   {
-    if (gpios.name == "io_control_mode" || gpios.name == "ctrl")
+    if (!gpios.name.compare(io_control_mode_name) || !gpios.name.compare(ctrl_name))
     {
       if (gpios.command_interfaces.size() != 1)
       {
@@ -432,16 +443,16 @@ std::vector<hardware_interface::StateInterface> MELFAPositionHardwareInterface::
     }
   };
 
-  // Add IO interfaces, control mode and controller type as reference to State interfaces
-  addStateInterfaces("hand_io", hand_io_states_);
-  addStateInterfaces("plc_link_io", plc_link_io_states_);
-  addStateInterfaces("safety_io", safety_io_states_);
-  addStateInterfaces("io_unit", io_unit_states_);
-  addStateInterfaces("misc1_io", misc1_io_states_);
-  addStateInterfaces("misc2_io", misc2_io_states_);
-  addStateInterfaces("misc3_io", misc3_io_states_);
-  addStateInterfaces("io_control_mode", mode_io_state_);
-  addStateInterfaces("ctrl", ctrl_type_io_state_);
+  // Add IO interfaces, control mode and controller type as reference to State interface
+  addStateInterfaces(hand_io_name, hand_io_states_);
+  addStateInterfaces(plc_link_io_name, plc_link_io_states_);
+  addStateInterfaces(safety_io_name, safety_io_states_);
+  addStateInterfaces(io_unit_name, io_unit_states_);
+  addStateInterfaces(misc1_io_name, misc1_io_states_);
+  addStateInterfaces(misc2_io_name, misc2_io_states_);
+  addStateInterfaces(misc3_io_name, misc3_io_states_);
+  addStateInterfaces(io_control_mode_name, mode_io_state_);
+  addStateInterfaces(ctrl_name, ctrl_type_io_state_);
 
   return state_interfaces_;
 }
@@ -499,15 +510,15 @@ std::vector<hardware_interface::CommandInterface> MELFAPositionHardwareInterface
   };
 
   // Add IO interfaces, control mode and controller type as reference to Command interfaces
-  addCommandInterfaces("hand_io", hand_io_commands_);
-  addCommandInterfaces("plc_link_io", plc_link_io_commands_);
-  addCommandInterfaces("safety_io", safety_io_commands_);
-  addCommandInterfaces("io_unit", io_unit_commands_);
-  addCommandInterfaces("misc1_io", misc1_io_commands_);
-  addCommandInterfaces("misc2_io", misc2_io_commands_);
-  addCommandInterfaces("misc3_io", misc3_io_commands_);
-  addCommandInterfaces("io_control_mode", mode_io_command_);
-  addCommandInterfaces("ctrl", ctrl_type_io_command_);
+  addCommandInterfaces(hand_io_name, hand_io_commands_);
+  addCommandInterfaces(plc_link_io_name, plc_link_io_commands_);
+  addCommandInterfaces(safety_io_name, safety_io_commands_);
+  addCommandInterfaces(io_unit_name, io_unit_commands_);
+  addCommandInterfaces(misc1_io_name, misc1_io_commands_);
+  addCommandInterfaces(misc2_io_name, misc2_io_commands_);
+  addCommandInterfaces(misc3_io_name, misc3_io_commands_);
+  addCommandInterfaces(io_control_mode_name, mode_io_command_);
+  addCommandInterfaces(ctrl_name, ctrl_type_io_command_);
 
   return command_interfaces_;
 }

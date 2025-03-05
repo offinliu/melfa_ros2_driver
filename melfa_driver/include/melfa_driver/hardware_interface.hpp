@@ -95,43 +95,54 @@ private:
   std::vector<double> joint_position_states_;
 
   // Hand Interfaces
+  std::string hand_io_name="hand_io";
   std::vector<double> hand_io_commands_;
   std::vector<double> hand_io_states_;
 
   // PLC link Interfaces
+  std::string plc_link_io_name="plc_link_io";
   std::vector<double> plc_link_io_commands_;
   std::vector<double> plc_link_io_states_;
 
   //  Safety Interfaces
+  std::string safety_io_name="safety_io";
   std::vector<double> safety_io_states_;
   std::vector<double> safety_io_commands_;
   
   //  IO Unit Interfaces
+  std::string io_unit_name="io_unit";
   std::vector<double> io_unit_states_;
   std::vector<double> io_unit_commands_;
 
   //  Misc1 Interfaces
+  std::string misc1_io_name="misc1_io";
   std::vector<double> misc1_io_states_;
   std::vector<double> misc1_io_commands_;
 
   //  Misc2 Interfaces
+  std::string misc2_io_name="misc2_io";
   std::vector<double> misc2_io_states_;
   std::vector<double> misc2_io_commands_;
 
   //  Misc3 Interfaces
+  std::string misc3_io_name="misc3_io";
   std::vector<double> misc3_io_states_;
   std::vector<double> misc3_io_commands_;
 
   // Binary IO Control Mode Interfaces 
+  std::string io_control_mode_name="io_control_mode";
   std::vector<double> mode_io_command_;
   std::vector<double> mode_io_state_;  
 
   // Melfa Controller Type Interfaces
+  std::string ctrl_name="ctrl";
   std::vector<double> ctrl_type_io_command_;
   std::vector<double> ctrl_type_io_state_;  
 
   std::string io_control_mode_;
   std::string controller_type_;
+  std::string prefix_;
+  std::string robot_name_prefix_;
 
   // IO Interface Limits
   std::vector<uint16_t> hand_io_limits_;
