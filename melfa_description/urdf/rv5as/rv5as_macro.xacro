@@ -32,7 +32,7 @@
             <parent link="${prefix}rv5as_base" />
             <child link="${prefix}rv5as_shoulder" />
             <axis xyz="0 0 1" />
-            <limit effort="1" velocity="2.16421" lower="-4.18879" upper="4.18879" />
+            <limit effort="50" velocity="2.16421" lower="-4.18879" upper="4.18879" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv5as_joint_2" type="revolute">
@@ -40,7 +40,7 @@
             <parent link="${prefix}rv5as_shoulder" />
             <child link="${prefix}rv5as_upper_arm" />
             <axis xyz="0 1 0" />
-            <limit effort="1" velocity="2.16421" lower="-2.58309" upper="2.58309" />
+            <limit effort="50" velocity="2.16421" lower="-2.58309" upper="2.58309" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv5as_joint_3" type="revolute">
@@ -48,7 +48,7 @@
             <parent link="${prefix}rv5as_upper_arm" />
             <child link="${prefix}rv5as_elbow" />
             <axis xyz="0 1 0" />
-            <limit effort="1" velocity="2.16421" lower="-2.61799" upper="2.61799" />
+            <limit effort="50" velocity="2.16421" lower="-2.61799" upper="2.61799" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv5as_joint_4" type="revolute">
@@ -56,7 +56,7 @@
             <parent link="${prefix}rv5as_elbow" />
             <child link="${prefix}rv5as_forearm" />
             <axis xyz="0 0 1" />
-            <limit effort="1" velocity="3.4383" lower="-3.49066" upper="3.49066" />
+            <limit effort="50" velocity="3.4383" lower="-3.49066" upper="3.49066" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv5as_joint_5" type="revolute">
@@ -64,7 +64,7 @@
             <parent link="${prefix}rv5as_forearm" />
             <child link="${prefix}rv5as_wrist" />
             <axis xyz="0 1 0" />
-            <limit effort="1" velocity="6.21337" lower="-2.0944" upper="2.0944" />
+            <limit effort="50" velocity="6.21337" lower="-2.0944" upper="2.0944" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv5as_joint_6" type="revolute">
@@ -72,7 +72,7 @@
             <parent link="${prefix}rv5as_wrist" />
             <child link="${prefix}rv5as_hand_flange" />
             <axis xyz="0 0 1" />
-            <limit effort="1" velocity="6.28318" lower="-3.49066" upper="3.49066" />
+            <limit effort="50" velocity="6.28318" lower="-3.49066" upper="3.49066" />
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv5as_hand_flange-to-default_tcp" type="fixed">

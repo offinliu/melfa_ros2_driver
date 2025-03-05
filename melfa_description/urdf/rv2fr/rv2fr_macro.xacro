@@ -33,7 +33,7 @@
             <parent link="${prefix}rv2fr_base"/>
             <child link="${prefix}rv2fr_shoulder"/>
             <axis xyz="0 0 1"/>
-            <limit effort="50" lower="-4.1887902047863905" upper="4.1887902047863905" velocity="5.235987755982989"/>
+            <limit lower="-4.1887902047863905" upper="4.1887902047863905" effort="50" velocity="5.235987755982989"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv2fr_joint_2" type="revolute">
@@ -41,7 +41,7 @@
             <parent link="${prefix}rv2fr_shoulder"/>
             <child link="${prefix}rv2fr_upper_arm"/>
             <axis xyz="0 1 0"/>
-            <limit effort="50" lower="-2.0943951023931953" upper="2.0943951023931953" velocity="2.6179938779914944"/>
+            <limit lower="-2.0943951023931953" upper="2.0943951023931953" effort="50" velocity="2.6179938779914944"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv2fr_joint_3" type="revolute">
@@ -49,7 +49,7 @@
             <parent link="${prefix}rv2fr_upper_arm"/>
             <child link="${prefix}rv2fr_elbow"/>
             <axis xyz="0 1 0"/>
-            <limit effort="50" lower="0.0" upper="2.792526803190927" velocity="5.235987755982989"/>
+            <limit lower="0.0" upper="2.792526803190927" effort="500" velocity="5.235987755982989"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv2fr_joint_4" type="revolute">
@@ -57,7 +57,7 @@
             <parent link="${prefix}rv2fr_elbow"/>
             <child link="${prefix}rv2fr_forearm"/>
             <axis xyz="0 0 1"/>
-            <limit effort="50" lower="-3.490658503988659" upper="3.490658503988659" velocity="7.853981633974483"/>
+            <limit lower="-3.490658503988659" upper="3.490658503988659" effort="50" velocity="7.853981633974483"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv2fr_joint_5" type="revolute">
@@ -65,7 +65,7 @@
             <parent link="${prefix}rv2fr_forearm"/>
             <child link="${prefix}rv2fr_wrist"/>
             <axis xyz="0 1 0"/>
-            <limit effort="50" lower="-2.0943951023931953" upper="2.0943951023931953" velocity="7.853981633974483"/>
+            <limit lower="-2.0943951023931953" upper="2.0943951023931953" effort="50" velocity="7.853981633974483"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv2fr_joint_6" type="revolute">
@@ -73,7 +73,7 @@
             <parent link="${prefix}rv2fr_wrist"/>
             <child link="${prefix}rv2fr_hand_flange"/>
             <axis xyz="0 0 1"/>
-            <limit effort="50" lower="-6.283185307179586" upper="6.283185307179586" velocity="12.566370614359172"/>
+            <limit lower="-6.283185307179586" upper="6.283185307179586" effort="50" velocity="12.566370614359172"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv2fr_hand_tcp" type="fixed">

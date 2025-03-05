@@ -6,7 +6,7 @@
     <xacro:arg name="use_fake_hardware" default="true" />
     <xacro:arg name="prefix" default="" />
     <xacro:arg name="robot_ip" default="192.168.0.20" />
-    <xacro:arg name="robot_port" default="10100" />
+    <xacro:arg name="robot_port" default="10000" />
     <xacro:arg name="initial_positions_file" default="initial_positions_rv.yaml" />
     <xacro:arg name="controller_config" default="custom_io_params.yaml" />
     <xacro:arg name="controller_type" default="D" />

@@ -33,7 +33,7 @@
             <parent link="${prefix}rv8crl_base"/>
             <child link="${prefix}rv8crl_shoulder"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-2.9670597283903604" upper="2.9670597283903604" velocity="5.026548245743669"/>
+            <limit effort="50" lower="-2.9670597283903604" upper="2.9670597283903604" velocity="5.026548245743669"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv8crl_joint_2" type="revolute">
@@ -41,7 +41,7 @@
             <parent link="${prefix}rv8crl_shoulder"/>
             <child link="${prefix}rv8crl_upper_arm"/>
             <axis xyz="0 1 0"/>
-            <limit effort="1" lower="-1.9198621771937625" upper="1.9198621771937625" velocity="5.602506898901797"/>
+            <limit effort="50" lower="-1.9198621771937625" upper="1.9198621771937625" velocity="5.602506898901797"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv8crl_joint_3" type="revolute">
@@ -49,7 +49,7 @@
             <parent link="${prefix}rv8crl_upper_arm"/>
             <child link="${prefix}rv8crl_elbow"/>
             <axis xyz="0 1 0"/>
-            <limit effort="1" lower="0.0" upper="2.8797932657906435" velocity="6.283185307179586"/>
+            <limit effort="50" lower="0.0" upper="2.8797932657906435" velocity="6.283185307179586"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv8crl_joint_4" type="revolute">
@@ -57,7 +57,7 @@
             <parent link="${prefix}rv8crl_elbow"/>
             <child link="${prefix}rv8crl_forearm"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-3.490658503988659" upper="3.490658503988659" velocity="5.88175957922089"/>
+            <limit effort="50" lower="-3.490658503988659" upper="3.490658503988659" velocity="5.88175957922089"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv8crl_joint_5" type="revolute">
@@ -65,7 +65,7 @@
             <parent link="${prefix}rv8crl_forearm"/>
             <child link="${prefix}rv8crl_wrist"/>
             <axis xyz="0 1 0"/>
-            <limit effort="1" lower="-2.0943951023931953" upper="2.0943951023931953" velocity="7.853981633974483"/>
+            <limit effort="50" lower="-2.0943951023931953" upper="2.0943951023931953" velocity="7.853981633974483"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv8crl_joint_6" type="revolute">
@@ -73,7 +73,7 @@
             <parent link="${prefix}rv8crl_wrist"/>
             <child link="${prefix}rv8crl_hand_flange"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-6.283185307179586" upper="6.283185307179586" velocity="12.566370614359172"/>
+            <limit effort="50" lower="-6.283185307179586" upper="6.283185307179586" velocity="12.566370614359172"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv8crl_hand_tcp" type="fixed">

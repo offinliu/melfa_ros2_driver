@@ -21,6 +21,7 @@
                 </xacro:if>
                 <xacro:unless value="${use_fake_hardware or use_sim}">
                     <plugin>melfa_driver/MELFAPositionHardwareInterface</plugin>
+                    <param name="prefix">${prefix}</param>
                     <param name="robot_ip">${robot_ip}</param>
                     <param name="robot_port">${robot_port}</param>
                     <param name="scara">${scara}</param>
@@ -135,11 +136,11 @@
                     <xacro:gpio_interface interface_name="${prefix}misc2_io" add_state_interfaces="true" add_command_interfaces="true"/>
                     <xacro:gpio_interface interface_name="${prefix}misc3_io" add_state_interfaces="true" add_command_interfaces="true"/>
                 </xacro:if>
-                <gpio name="io_control_mode">
+                <gpio name="${prefix}io_control_mode">
                     <state_interface name="io_mode"/>
                     <command_interface name="io_mode"/>
                 </gpio>
-                <gpio name="ctrl">
+                <gpio name="${prefix}ctrl">
                     <state_interface name="ctrl_type"/>
                     <command_interface name="ctrl_type"/>
                 </gpio>

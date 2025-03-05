@@ -33,7 +33,7 @@
             <parent link="${prefix}rh6crh6020_base"/>
             <child link="${prefix}rh6crh6020_no1arm"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-2.303834612632515" upper="2.303834612632515" velocity="7.3303828583761845"/>
+            <limit effort="50" lower="-2.303834612632515" upper="2.303834612632515" velocity="7.3303828583761845"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rh6crh6020_joint_2" type="revolute">
@@ -41,7 +41,7 @@
             <parent link="${prefix}rh6crh6020_no1arm"/>
             <child link="${prefix}rh6crh6020_no2arm"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-2.6179938779914944" upper="2.6179938779914944" velocity="12.566370614359172"/>
+            <limit effort="50" lower="-2.6179938779914944" upper="2.6179938779914944" velocity="12.566370614359172"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rh6crh6020_joint_3" type="prismatic">
@@ -49,7 +49,7 @@
             <parent link="${prefix}rh6crh6020_no2arm"/>
             <child link="${prefix}rh6crh6020_shaft_z"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-0.051" upper="0.149" velocity="1.1"/>
+            <limit effort="50" lower="-0.051" upper="0.149" velocity="1.1"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rh6crh6020_joint_4" type="revolute">
@@ -57,7 +57,7 @@
             <parent link="${prefix}rh6crh6020_shaft_z"/>
             <child link="${prefix}rh6crh6020_shaft"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-6.283185307179586" upper="6.283185307179586" velocity="43.63323129985824"/>
+            <limit effort="50" lower="-6.283185307179586" upper="6.283185307179586" velocity="43.63323129985824"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rh6crh6020_shift_to_default_tcp" type="fixed">

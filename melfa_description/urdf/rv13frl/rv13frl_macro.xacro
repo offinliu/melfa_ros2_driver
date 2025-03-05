@@ -33,7 +33,7 @@
             <parent link="${prefix}rv13frl_base"/>
             <child link="${prefix}rv13frl_shoulder"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-3.3161255787892263" upper="3.3161255787892263" velocity="4.084070449666731"/>
+            <limit effort="50" lower="-3.3161255787892263" upper="3.3161255787892263" velocity="4.084070449666731"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv13frl_joint_2" type="revolute">
@@ -41,7 +41,7 @@
             <parent link="${prefix}rv13frl_shoulder"/>
             <child link="${prefix}rv13frl_upper_arm"/>
             <axis xyz="0 1 0"/>
-            <limit effort="1" lower="-1.5707963267948966" upper="2.6179938779914944" velocity="2.8623399732707"/>
+            <limit effort="50" lower="-1.5707963267948966" upper="2.6179938779914944" velocity="2.8623399732707"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv13frl_joint_3" type="revolute">
@@ -49,7 +49,7 @@
             <parent link="${prefix}rv13frl_upper_arm"/>
             <child link="${prefix}rv13frl_elbow"/>
             <axis xyz="0 1 0"/>
-            <limit effort="1" lower="-0.17453292519943295" upper="2.748893571891069" velocity="3.822271061867582"/>
+            <limit effort="50" lower="-0.17453292519943295" upper="2.748893571891069" velocity="3.822271061867582"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv13frl_joint_4" type="revolute">
@@ -57,7 +57,7 @@
             <parent link="${prefix}rv13frl_elbow"/>
             <child link="${prefix}rv13frl_forearm"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-3.490658503988659" upper="3.490658503988659" velocity="6.544984694978735"/>
+            <limit effort="50" lower="-3.490658503988659" upper="3.490658503988659" velocity="6.544984694978735"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv13frl_joint_5" type="revolute">
@@ -65,7 +65,7 @@
             <parent link="${prefix}rv13frl_forearm"/>
             <child link="${prefix}rv13frl_wrist"/>
             <axis xyz="0 1 0"/>
-            <limit effort="1" lower="-2.0943951023931953" upper="2.0943951023931953" velocity="6.544984694978735"/>
+            <limit effort="50" lower="-2.0943951023931953" upper="2.0943951023931953" velocity="6.544984694978735"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv13frl_joint_6" type="revolute">
@@ -73,7 +73,7 @@
             <parent link="${prefix}rv13frl_wrist"/>
             <child link="${prefix}rv13frl_hand_flange"/>
             <axis xyz="0 0 1"/>
-            <limit effort="1" lower="-6.283185307179586" upper="6.283185307179586" velocity="12.566370614359172"/>
+            <limit effort="50" lower="-6.283185307179586" upper="6.283185307179586" velocity="12.566370614359172"/>
             <dynamics damping="1.0" friction="1.0"/>
         </joint>
         <joint name="${prefix}rv13frl_hand_tcp" type="fixed">
