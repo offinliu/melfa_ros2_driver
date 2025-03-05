@@ -168,7 +168,7 @@ MELFA ROS2 Driver is designed to interface CR800 robot controllers with the ROS2
 ## __4. Other MELFA ROS2 Related Repositories__
 
 - [MELFA ROS2 8XS](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_8xs/tree/humble) : Sample package with MELSERVO integration for 6+2-axis articulated robot and 4+2-axis SCARA robot. Accompanied with RT Toolbox3 Project File to try in RT Toolbox3 simulator.
-- [MELFA ROS2 Integrated System Simulators](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_sysim/tree/humble) : Experience MELSOFT System Simulators for Programmable Logic Controllers and Human Machine Interface touch displays operating together seamlessly with a simple ROS2 program. Includes sample packages with MELSOFT project files. 
+- [MELFA ROS2 Integrated System Simulators](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_syssim/tree/humble) : Experience MELSOFT System Simulators for Programmable Logic Controllers and Human Machine Interface touch displays operating together seamlessly with a simple ROS2 program. Includes sample packages with MELSOFT project files. 
 - [MELFA ROS2 PLC](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_plc/tree/humble) : Sample program with simple integration for MELSEC iQ-R Controllers.
 - [MELFA ROS2 HMI](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_hmi/tree/humble) : Sample program with simple integration with GOT-HMI (Human Machine Interface) for iQ-platform robot controllers.
 
