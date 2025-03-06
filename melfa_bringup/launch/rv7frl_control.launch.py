@@ -232,8 +232,8 @@ def generate_launch_description():
     control_node = Node(
         package='controller_manager',
         executable='ros2_control_node',
-        parameters=[ParameterFile(robot_controllers, allow_substs=True)],
-        remappings=[("~/robot_description", "robot_description"),],
+        parameters=[robot_description, ParameterFile(robot_controllers, allow_substs=True)],
+        # remappings=[("~/robot_description", "robot_description"),],
         output={
             'stdout': 'screen',
             'stderr': 'screen',
