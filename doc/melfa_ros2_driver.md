@@ -7,7 +7,7 @@ MELFA ROS2 is designed to interface the CR800 robot controller with the ROS2 so 
 
 ## __1. Installation__
 
-This manual is for <u>__ROS2 Humble__</u> using __rtexc api version 1.0__. For more information regarding __rtexc api__ , please refer to [CR750/CR751 Series Controller, CR800 Series Controller Ethernet Function Instruction Manual](https://www.mitsubishielectric.co.jp/fa/download/search.do?mode=manual&kisyu=/robot&q=Ethernet%20Function%20Instruction%20Manual&sort=0&style=0&lang=2&category1=0&filter_readme=0&filter_discontinued=0&filter_bundled=0) from [Robot Industrial/Collaborative Robot MELFA Manual](https://www.mitsubishielectric.co.jp/fa/download/search.do?mode=manual&kisyu=/robot).
+This manual is for <u>__ROS2 Humble__</u> using __rtexc api version 1.0__. For more information regarding __rtexc api__ , please refer to [CR750/CR751 Series Controller, CR800 Series Controller Ethernet Function Instruction Manual](https://www.mitsubishielectric.com/fa/download/search.page?mode=manual&kisyu=/robot&q=CR750%2FCR751%20Series%20Controller%2C%20CR800%20Series%20Controller%20Ethernet%20Function%20Instruction%20Manual&sort=0&style=0&lang=2&category1=0&filter_discontinued=0&filter_bundled=0) from [Robot Industrial/Collaborative Robot MELFA Manual](https://www.mitsubishielectric.com/fa/download/search.page?mode=manual&kisyu=/robot).
 
 ### __Build and Install__
 
@@ -17,13 +17,13 @@ mkdir -p ~/melfa_ws/src
 cd ~/melfa_ws/src
 source /opt/ros/humble/setup.bash
 ```
-Download MELFA ROS2 Driver [Version 1.0.4](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_driver/archive/refs/tags/v1.0.4.zip) from the git repository and extract it into your working directory.
+Download [MELFA ROS2 Driver](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_driver/releases) from the repository and extract it into your working directory.
 
-Or you can clone the repository to get the latest experimental version
+Or you can clone the repository
 ```
 git clone -b humble https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_driver.git
 ```
-However, do note that only the release tag versions are stable and supported.
+However, only the release tag versions are tested and covered by after-sales support.
 
 
 2. Install moveit servo and chomp
@@ -62,7 +62,7 @@ colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 source install/setup.bash
 ```
 
-## __2. Viewing the robot__
+## __2. View robot URDF__
 
 1. To view the robot, run the following command. The command will launch __Joint State Publisher__ for you use.
 
@@ -75,7 +75,7 @@ ros2 launch melfa_description view_rv7frl.launch.py
 
 </br>
 
-## __3. Launching the robot with MoveIt__
+## __3. Launch ros2_control and MoveIt__
 
 1. Launch robot arm in Rviz2 simulation (the controller_type and robot_ip values do not affect simulation outcomes) [Terminal 1]
 
@@ -121,7 +121,7 @@ ros2 launch melfa_rv7frl_moveit_config rv7frl_moveit.launch.py
 
 </br>
 
-## __4. Examples of IO Commands__
+## __4. Examples of I/O operations using command line interface__
 
 This section will guide you through a simple demo of melfa_io_controllers using RT Toolbox3 simulator
 
@@ -302,7 +302,7 @@ ros2 service call /gpio_controller/configure_mode melfa_msgs/srv/ModeConfigure "
 
 Note: The above command disables any read or write operation for the plc_link_io_interface. To enable again, repeat the service call with plc_link_io_interface as "true"
 
-## __5. Trying MoveIt Servo__
+## __5. Launch MoveIt Servo__
 
 Launch robot driver simulation or real robot [Terminal 1]
 
@@ -320,6 +320,46 @@ Launch Servo Keyboard Input [Terminal 3]
 
 ```
 ros2 run melfa_rv7frl_moveit_config servo_keyboard_input
+```
+
+## 6. Gazebo Fortress
+
+Some modifications are required for Gazebo-Fortress to launch correctly.
+
+In melfa_description/config/"robot model"_controllers.yaml, swap the commented lines
+
+```
+# example: melfa_description/config/rv7frl_controllers.yaml 
+
+rv7frl_controller:
+  ros__parameters:
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+    joints:
+     # - $(var prefix)rv7frl_joint_1
+     # - $(var prefix)rv7frl_joint_2
+     # - $(var prefix)rv7frl_joint_3
+     # - $(var prefix)rv7frl_joint_4
+     # - $(var prefix)rv7frl_joint_5
+     # - $(var prefix)rv7frl_joint_6
+      - rv7frl_joint_1
+      - rv7frl_joint_2
+      - rv7frl_joint_3
+      - rv7frl_joint_4
+      - rv7frl_joint_5
+      - rv7frl_joint_6
+```
+
+Build the melfa_description package
+
+```
+colcon build --packages-select melfa_description
+```
+Launch Gazebo-Fortress with the following command
+```
+ros2 launch melfa_bringup rv7frl_control.launch.py use_sim:=true controller_type:="R" 
 ```
 
 ### Other guides:
