@@ -163,6 +163,7 @@ protected:
 
   std::vector<long int> ctrl_limits;
   unsigned int control_mode_config_;
+  std::string robot_prefix_;
 
 };
 }  // namespace melfa_io_controllers

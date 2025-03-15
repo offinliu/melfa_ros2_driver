@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>melfa_description</name>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <description>melfa_description</description>
   <maintainer email="Muyao.Liu@asia.meap.com">Liu Muyao</maintainer>
   <license>Apache License 2.0</license>
@@ -19,6 +19,9 @@
 
   <exec_depend>xacro</exec_depend>
   <exec_depend>urdf</exec_depend>
+  <exec_depend>ign_ros2_control</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>ros_gz_sim</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

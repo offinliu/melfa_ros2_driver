@@ -4,7 +4,7 @@
 
 This section will guide you to establish a UDP/IP connection between your ROS2 computer and _RT Toolbox3 simulator_. It is highly recommended to test your ROS2 applications on __RT Toolbox3 simulator__ before testing it on a real robot. This is helpful as __RT Toolbox3 simulator__ provides "near real" experience with 1-to-1 error conditions, velocity profiles and "close to actual" cycle times. _RT Toolbox3 simulator_ works with __Real Time Monitoring__<sup>1</sup> function which is useful for optimizing your ROS2 application.
 
-&#10146; <sup>1</sup> __Real Time Monitoring__ : found in [Ethernet Function Instruction Manual](https://www.mitsubishielectric.co.jp/fa/download/search.do?mode=manual&kisyu=/robot&q=Ethernet%20Function%20Instruction%20Manual&sort=0&style=0&lang=2&category1=0&filter_readme=0&filter_discontinued=0&filter_bundled=0) from [Robot Industrial/Collaborative Robot MELFA Manual](https://www.mitsubishielectric.co.jp/fa/download/search.do?mode=manual&kisyu=/robot). Provides real time data at control cycle intervals, 3.5ms for CR800-R/D and 7.11ms for CR800-Q.
+&#10146; <sup>1</sup> __Real Time Monitoring__ : found in [CR750/CR751 Series Controller, CR800 Series Controller Ethernet Function Instruction Manual](https://www.mitsubishielectric.com/fa/download/search.page?mode=manual&kisyu=/robot&q=CR750%2FCR751%20Series%20Controller%2C%20CR800%20Series%20Controller%20Ethernet%20Function%20Instruction%20Manual&sort=0&style=0&lang=2&category1=0&filter_discontinued=0&filter_bundled=0) from [Robot Industrial/Collaborative Robot MELFA Manual](https://www.mitsubishielectric.com/fa/download/search.page?mode=manual&kisyu=/robot). Provides real time data at control cycle intervals, 3.5ms for CR800-R/D and 7.11ms for CR800-Q.
 
 Sections:
 
@@ -40,7 +40,16 @@ This section will guide you to find your local IP address on your Windows10 devi
 
 </br>
 
-4. On the __Operation Panel__ (Green popup window for simulated robot), click on the __Select__ button and select the _robot Program_ you have created. Click __OK__. 
+4. On the __Operation Panel__ (Green popup window for simulated robot), click on the __Select__ button and select the _robot Program_ you have created. Click __OK__. It is highly recommended to increase the filter value in the robot program to account jitter due to Windows not being real-time.
+```
+Servo On
+Open "ENET: 192.168.0.100" As #1 'Insert your Linux Machine IP address in this line. Open stores the IP address into variable 1.
+Mxt 1,1,200 'The first 1 refers to the IP address from the line above. 
+           'The second 1 configures Mxt to expect Joint commands. 
+           'The 200 refers to a 200ms low pass filter.
+End 
+
+```
 
 </br>
 
@@ -77,14 +86,16 @@ ping 192.168.3.150
 
 1. Assuming that ping is successful, you are now ready to connect your RT Toolbox3 simulator as if it is a _real_ robot. For the purpose of this tutorial, run the following command in the terminal. This command will launch the bringup launch file for RV7FRL robot using the CR800-R robot controller.
 
+The command argument "packet_lost_log:=0" turns off the warning message for packet losses. It is highly recommended to NOT turn it off when connecting to a real robot. However, connecting to a simulation is fine.
+
 ~~~
-ros2 launch melfa_bringup rv7frl_control.launch.py use_fake_hardware:=false controller_type:="R" robot_ip:=192.168.3.100
+ros2 launch melfa_bringup rv7frl_control.launch.py use_fake_hardware:=false controller_type:="R" robot_ip:=192.168.3.100 packet_lost_log:=0
 ~~~
 
  To launch MoveIt Servo use the following command instead
 
 ~~~
-ros2 launch melfa_bringup rv7frl_control.launch.py use_fake_hardware:=false controller_type:="R" robot_ip:=192.168.3.100 launch_servo:=true
+ros2 launch melfa_bringup rv7frl_control.launch.py use_fake_hardware:=false controller_type:="R" robot_ip:=192.168.3.100 packet_lost_log:=0 launch_servo:=true
 ~~~
 
 </br>

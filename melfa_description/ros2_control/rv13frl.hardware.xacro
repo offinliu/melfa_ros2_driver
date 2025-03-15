@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro name="rv13frl_hardware" params="name prefix robot_ip robot_port scara is_j7 j7_linear is_j8 j8_linear initial_positions_file controller_config controller_type use_sim:=^|false use_fake_hardware:=^|true">
+    <xacro:macro name="rv13frl_hardware" params="name prefix robot_ip robot_port scara is_j7 j7_linear is_j8 j8_linear packet_lost_log initial_positions_file controller_config controller_type use_sim:=^|false use_fake_hardware:=^|true">
         <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_positions']}"/>
         <xacro:property name="ctrl_limits" value="${xacro.load_yaml(controller_config)['controller_limits']}"/>
         <xacro:property name="ctrl_mode" value="${xacro.load_yaml(controller_config)['control_mode_io']}"/>
@@ -10,17 +10,18 @@
 
             <xacro:if value="$(arg use_sim)">
                 <hardware>
-                    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+                    <plugin>ign_ros2_control/IgnitionSystem</plugin>
                 </hardware>
             </xacro:if>
             <xacro:unless value="$(arg use_sim)">
                 <hardware>
-                <xacro:if value="${use_fake_hardware}">
+                <xacro:if value="${use_fake_hardware or use_sim}">
                     <plugin>fake_components/GenericSystem</plugin>
                         <param name="state_following_offset">0.0</param>
                 </xacro:if>
-                <xacro:unless value="${use_fake_hardware}">
+                <xacro:unless value="${use_fake_hardware or use_sim}">
                     <plugin>melfa_driver/MELFAPositionHardwareInterface</plugin>
+                    <param name="prefix">${prefix}</param>
                     <param name="robot_ip">${robot_ip}</param>
                     <param name="robot_port">${robot_port}</param>
                     <param name="scara">${scara}</param>
@@ -28,6 +29,7 @@
                     <param name="j7_linear">${j7_linear}</param>
                     <param name="is_j8">${is_j8}</param>
                     <param name="j8_linear">${j8_linear}</param>
+                    <param name="packet_lost_log">${packet_lost_log}</param>
                      <!-- Controller Type R/Q/D -->
                     <param name="controller_type">${controller_type}</param>
                      <!-- Limits of IO with respect to controller_type -->
@@ -51,7 +53,11 @@
                     <param name="max">3.3161255787892263</param>
                 </command_interface>
                 <state_interface name="position"/>
-                <!-- <state_interface name="velocity"/> -->
+                <xacro:if value="$(arg use_sim)">
+                    <state_interface name="position">
+                        <param name="initial_value">${initial_positions['rv_joint_1']}</param>
+                    </state_interface>
+                </xacro:if>
             </joint>
 
             <joint name="${prefix}rv13frl_joint_2">
@@ -61,7 +67,11 @@
                     <param name="max">2.6179938779914944</param>
                 </command_interface>
                 <state_interface name="position"/>
-                <!-- <state_interface name="velocity"/> -->
+                <xacro:if value="$(arg use_sim)">
+                    <state_interface name="position">
+                        <param name="initial_value">${initial_positions['rv_joint_2']}</param>
+                    </state_interface>
+                </xacro:if>
             </joint>
             <joint name="${prefix}rv13frl_joint_3">
                 <param name="initial_position">${initial_positions['rv_joint_3']}</param>
@@ -70,7 +80,11 @@
                     <param name="max">2.748893571891069</param>
                 </command_interface>
                 <state_interface name="position"/>
-                <!-- <state_interface name="velocity"/> -->
+                <xacro:if value="$(arg use_sim)">
+                    <state_interface name="position">
+                        <param name="initial_value">${initial_positions['rv_joint_3']}</param>
+                    </state_interface>
+                </xacro:if>
             </joint>
             <joint name="${prefix}rv13frl_joint_4">
                 <param name="initial_position">${initial_positions['rv_joint_4']}</param>
@@ -79,7 +93,11 @@
                     <param name="max">3.490658503988659</param>
                 </command_interface>
                 <state_interface name="position"/>
-                <!-- <state_interface name="velocity"/> -->
+                <xacro:if value="$(arg use_sim)">
+                    <state_interface name="position">
+                        <param name="initial_value">${initial_positions['rv_joint_4']}</param>
+                    </state_interface>
+                </xacro:if>
             </joint>
             <joint name="${prefix}rv13frl_joint_5">
                 <param name="initial_position">${initial_positions['rv_joint_5']}</param>
@@ -88,7 +106,11 @@
                     <param name="max">2.0943951023931953</param>
                 </command_interface>
                 <state_interface name="position"/>
-                <!-- <state_interface name="velocity"/> -->
+                <xacro:if value="$(arg use_sim)">
+                    <state_interface name="position">
+                        <param name="initial_value">${initial_positions['rv_joint_5']}</param>
+                    </state_interface>
+                </xacro:if>
             </joint>
             <joint name="${prefix}rv13frl_joint_6">
                 <param name="initial_position">${initial_positions['rv_joint_6']}</param>
@@ -97,7 +119,11 @@
                     <param name="max">6.283185307179586</param>
                 </command_interface>
                 <state_interface name="position"/>
-                <!-- <state_interface name="velocity"/> -->
+                <xacro:if value="$(arg use_sim)">
+                    <state_interface name="position">
+                        <param name="initial_value">${initial_positions['rv_joint_6']}</param>
+                    </state_interface>
+                </xacro:if>
             </joint>
 
 
@@ -157,11 +183,11 @@
                     <xacro:gpio_interface interface_name="${prefix}misc2_io" add_state_interfaces="true" add_command_interfaces="true"/>
                     <xacro:gpio_interface interface_name="${prefix}misc3_io" add_state_interfaces="true" add_command_interfaces="true"/>
                 </xacro:if>
-                <gpio name="io_control_mode">
+                <gpio name="${prefix}io_control_mode">
                     <state_interface name="io_mode"/>
                     <command_interface name="io_mode"/>
                 </gpio>
-                <gpio name="ctrl">
+                <gpio name="${prefix}ctrl">
                     <state_interface name="ctrl_type"/>
                     <command_interface name="ctrl_type"/>
                 </gpio>
