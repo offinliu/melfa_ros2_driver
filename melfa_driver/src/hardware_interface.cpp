@@ -239,7 +239,7 @@ MELFAPositionHardwareInterface::on_activate(const rclcpp_lifecycle::State& previ
   api_wrap_->cmd_pack.send_type = MXT_TYP_JOINT;          // set joint cmd type to joint.
   *(api_wrap_->cmd_pack.mon_dat) = MXT_TYP_FB_JOINT;      // set first feedback to joint encoder feedback.
   *(api_wrap_->cmd_pack.mon_dat + 1) = MXT_TYP_FB_POSE;   // set second feedback to pose feedback.
-  *(api_wrap_->cmd_pack.mon_dat + 2) = MXT_TYP_FB_PULSE;  // set thrid feedback to pulse per second.
+  *(api_wrap_->cmd_pack.mon_dat + 2) = MXT_TYP_FB_PULSE;  // set thrid feedback to pulse encoder feedback.
   *(api_wrap_->cmd_pack.mon_dat + 3) = MXT_TYP_FBKCUR;    // set forth feedback to % current.
 
   // API debug mode
