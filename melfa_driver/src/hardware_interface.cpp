@@ -103,16 +103,16 @@ MELFAPositionHardwareInterface::on_init(const hardware_interface::HardwareInfo& 
   io_control_mode_ = info_.hardware_parameters["io_control_mode"];
   controller_type_ = info_.hardware_parameters["controller_type"];
   prefix_ = info_.hardware_parameters["prefix"];
-  RCLCPP_INFO(rclcpp::get_logger("MELFAPositionHardwareInterface"), "prefix_:  %s",prefix_.c_str());
-  hand_io_name.insert(0,prefix_);
-  plc_link_io_name.insert(0,prefix_);
-  safety_io_name.insert(0,prefix_);
-  io_unit_name.insert(0,prefix_);
-  misc1_io_name.insert(0,prefix_);
-  misc2_io_name.insert(0,prefix_);
-  misc3_io_name.insert(0,prefix_);
-  io_control_mode_name.insert(0,prefix_);
-  ctrl_name.insert(0,prefix_);
+  RCLCPP_INFO(rclcpp::get_logger("MELFAPositionHardwareInterface"), "prefix_:  %s", prefix_.c_str());
+  hand_io_name.insert(0, prefix_);
+  plc_link_io_name.insert(0, prefix_);
+  safety_io_name.insert(0, prefix_);
+  io_unit_name.insert(0, prefix_);
+  misc1_io_name.insert(0, prefix_);
+  misc2_io_name.insert(0, prefix_);
+  misc3_io_name.insert(0, prefix_);
+  io_control_mode_name.insert(0, prefix_);
+  ctrl_name.insert(0, prefix_);
 
   // Joint position commmands and states initiailization
   joint_position_commands_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
@@ -263,10 +263,10 @@ MELFAPositionHardwareInterface::on_activate(const rclcpp_lifecycle::State& previ
   }
   joint_position_states_[2] = api_wrap_->fb_pack.jnt_EFB.j3;
   joint_position_states_[3] = api_wrap_->fb_pack.jnt_EFB.j4;
-  if (is_scara==0)
+  if (is_scara == 0)
   {
-  joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j5;
-  joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j6;
+    joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j5;
+    joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j6;
   }
   if (is_j7 == 1)
   {
@@ -274,15 +274,14 @@ MELFAPositionHardwareInterface::on_activate(const rclcpp_lifecycle::State& previ
     {
       api_wrap_->fb_pack.jnt_EFB.j7 /= 1000.0;
     }
-    if (is_scara==1)
+    if (is_scara == 1)
     {
       joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j7;
     }
-    else 
+    else
     {
       joint_position_states_[6] = api_wrap_->fb_pack.jnt_EFB.j7;
     }
-
   }
   if (is_j8 == 1)
   {
@@ -290,11 +289,11 @@ MELFAPositionHardwareInterface::on_activate(const rclcpp_lifecycle::State& previ
     {
       api_wrap_->fb_pack.jnt_EFB.j8 /= 1000.0;
     }
-    if (is_scara ==1)
+    if (is_scara == 1)
     {
       joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j8;
     }
-    else 
+    else
     {
       joint_position_states_[7] = api_wrap_->fb_pack.jnt_EFB.j8;
     }
@@ -547,12 +546,12 @@ hardware_interface::return_type MELFAPositionHardwareInterface::read(const rclcp
       RCLCPP_FATAL(rclcpp::get_logger("MELFAPositionHardwareInterface"), "ERROR: Connection lost.");
       return hardware_interface::return_type::ERROR;
     }
-    if (packet_lost_log!=0)
+    if (packet_lost_log != 0)
     {
       RCLCPP_WARN(rclcpp::get_logger("MELFAPositionHardwareInterface"), "WARN: Packet lost. %d",
-                api_wrap_->packet_recv_lost);
+                  api_wrap_->packet_recv_lost);
     }
-    
+
     return hardware_interface::return_type::OK;
   }
 
@@ -564,10 +563,10 @@ hardware_interface::return_type MELFAPositionHardwareInterface::read(const rclcp
   }
   joint_position_states_[2] = api_wrap_->fb_pack.jnt_EFB.j3;
   joint_position_states_[3] = api_wrap_->fb_pack.jnt_EFB.j4;
-  if (is_scara==0)
+  if (is_scara == 0)
   {
-  joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j5;
-  joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j6;
+    joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j5;
+    joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j6;
   }
   if (is_j7 == 1)
   {
@@ -575,11 +574,11 @@ hardware_interface::return_type MELFAPositionHardwareInterface::read(const rclcp
     {
       api_wrap_->fb_pack.jnt_EFB.j7 /= 1000.0;
     }
-    if (is_scara==1)
+    if (is_scara == 1)
     {
       joint_position_states_[4] = api_wrap_->fb_pack.jnt_EFB.j7;
     }
-    else 
+    else
     {
       joint_position_states_[6] = api_wrap_->fb_pack.jnt_EFB.j7;
     }
@@ -594,11 +593,11 @@ hardware_interface::return_type MELFAPositionHardwareInterface::read(const rclcp
     {
       api_wrap_->fb_pack.jnt_EFB.j8 /= 1000.0;
     }
-    if (is_scara ==1)
+    if (is_scara == 1)
     {
       joint_position_states_[5] = api_wrap_->fb_pack.jnt_EFB.j8;
     }
-    else 
+    else
     {
       joint_position_states_[7] = api_wrap_->fb_pack.jnt_EFB.j8;
     }
@@ -734,7 +733,7 @@ hardware_interface::return_type MELFAPositionHardwareInterface::write(const rclc
   }
   if (is_j7 == 1)
   {
-    if (is_scara==1)
+    if (is_scara == 1)
     {
       api_wrap_->cmd_pack.jnt_CMD.j7 = joint_position_commands_[4];
     }
@@ -749,13 +748,13 @@ hardware_interface::return_type MELFAPositionHardwareInterface::write(const rclc
   }
   if (is_j8 == 1)
   {
-    if (is_scara==1)
+    if (is_scara == 1)
     {
-    api_wrap_->cmd_pack.jnt_CMD.j8 = joint_position_commands_[5];
+      api_wrap_->cmd_pack.jnt_CMD.j8 = joint_position_commands_[5];
     }
     else
     {
-    api_wrap_->cmd_pack.jnt_CMD.j8 = joint_position_commands_[7];
+      api_wrap_->cmd_pack.jnt_CMD.j8 = joint_position_commands_[7];
     }
     if (j8_linear == 1)
     {
@@ -822,7 +821,7 @@ hardware_interface::return_type MELFAPositionHardwareInterface::write(const rclc
       RCLCPP_WARN(rclcpp::get_logger("MELFAPositionHardwareInterface"), "ERROR: Command Fail.");
       return hardware_interface::return_type::OK;
     }
-      return hardware_interface::return_type::OK;
+    return hardware_interface::return_type::OK;
   }
   else
   {
