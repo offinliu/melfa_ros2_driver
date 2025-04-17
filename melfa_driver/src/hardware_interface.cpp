@@ -104,15 +104,6 @@ MELFAPositionHardwareInterface::on_init(const hardware_interface::HardwareInfo& 
   controller_type_ = info_.hardware_parameters["controller_type"];
   prefix_ = info_.hardware_parameters["prefix"];
   RCLCPP_INFO(rclcpp::get_logger("MELFAPositionHardwareInterface"), "prefix_:  %s", prefix_.c_str());
-  hand_io_name.insert(0, prefix_);
-  plc_link_io_name.insert(0, prefix_);
-  safety_io_name.insert(0, prefix_);
-  io_unit_name.insert(0, prefix_);
-  misc1_io_name.insert(0, prefix_);
-  misc2_io_name.insert(0, prefix_);
-  misc3_io_name.insert(0, prefix_);
-  io_control_mode_name.insert(0, prefix_);
-  ctrl_name.insert(0, prefix_);
 
   // Joint position commmands and states initiailization
   joint_position_commands_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
@@ -582,9 +573,6 @@ hardware_interface::return_type MELFAPositionHardwareInterface::read(const rclcp
     {
       joint_position_states_[6] = api_wrap_->fb_pack.jnt_EFB.j7;
     }
-    RCLCPP_WARN(rclcpp::get_logger("MELFAPositionHardwareInterface"), "WARN: Packet lost. %d",
-                api_wrap_->packet_recv_lost);
-    return hardware_interface::return_type::OK;
   }
 
   if (is_j8 == 1)
