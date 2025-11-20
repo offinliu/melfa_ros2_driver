@@ -102,8 +102,6 @@ MELFAPositionHardwareInterface::on_init(const hardware_interface::HardwareInfo& 
   // Reading user defined IO binary control mode and Melfa Controller type
   io_control_mode_ = info_.hardware_parameters["io_control_mode"];
   controller_type_ = info_.hardware_parameters["controller_type"];
-  prefix_ = info_.hardware_parameters["prefix"];
-  RCLCPP_INFO(rclcpp::get_logger("MELFAPositionHardwareInterface"), "prefix_:  %s", prefix_.c_str());
 
   // Joint position commmands and states initiailization
   joint_position_commands_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());

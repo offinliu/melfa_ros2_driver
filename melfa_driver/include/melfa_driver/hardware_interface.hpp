@@ -143,8 +143,6 @@ private:
 
   std::string io_control_mode_;
   std::string controller_type_;
-  std::string prefix_;
-  std::string robot_name_prefix_;
 
   // IO Interface Limits
   std::vector<uint16_t> hand_io_limits_;
